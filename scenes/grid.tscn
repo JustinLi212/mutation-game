@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://6q0egmwc1vs5"]
+
+[ext_resource type="Script" uid="uid://dl556yt0ouwgn" path="res://scenes/grid.gd" id="1_2s7k2"]
+[ext_resource type="Texture2D" uid="uid://h8t34ms5hkmv" path="res://assets/Grid.png" id="1_t5fjg"]
+[ext_resource type="PackedScene" uid="uid://cigqx6eyt650v" path="res://scenes/player/player.tscn" id="2_w88cy"]
+
+[node name="Grid" type="AnimatableBody2D" unique_id=1141323151]
+script = ExtResource("1_2s7k2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2042260414]
+texture = ExtResource("1_t5fjg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=709786007]
+build_mode = 1
+polygon = PackedVector2Array(-56, -56, -56, 56, 56, 56, 56, -56)
+
+[node name="Player" parent="." unique_id=1433435650 instance=ExtResource("2_w88cy")]
+motion_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1198657107]
+offset_left = -77.0
+offset_top = -83.0
+offset_right = -61.0
+offset_bottom = -60.0
+bbcode_enabled = true
+text = "1"
+scroll_active = false
