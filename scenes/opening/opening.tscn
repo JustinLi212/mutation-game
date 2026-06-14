@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bk80fxrac0p3i"]
+
+[ext_resource type="PackedScene" uid="uid://sikc02ddepyt" path="res://addons/maaacks_game_template/base/nodes/opening/opening.tscn" id="1_l1wh1"]
+[ext_resource type="Texture2D" uid="uid://d0tc7rhmasoth" path="res://assets/godot_engine_logo/wild_jam_texture.tres" id="2_ke3tw"]
+
+[node name="Opening" unique_id=684202726 instance=ExtResource("1_l1wh1")]
+images = Array[Texture2D]([ExtResource("2_ke3tw")])
+
+[node name="ImagesContainer" parent="." index="1" unique_id=1471559661]
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
