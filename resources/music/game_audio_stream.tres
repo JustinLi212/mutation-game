@@ -1,0 +1,8 @@
+[gd_resource type="AudioStreamSynchronized" format=3 uid="uid://bsiimap67gs0v"]
+
+[ext_resource type="AudioStream" uid="uid://bs2bd1k3p2a0p" path="res://assets/music/mutation_menu.ogg" id="1_sssxm"]
+
+[resource]
+stream_count = 1
+stream_0/stream = ExtResource("1_sssxm")
+stream_0/volume = 0.0

@@ -1,7 +1,22 @@
 [gd_scene format=3 uid="uid://r5t485lr3p7t"]
 
 [ext_resource type="Script" uid="uid://ctrh4qyxqncss" path="res://addons/maaacks_game_template/base/nodes/autoloads/music_controller/music_controller.gd" id="1_wbudo"]
+[ext_resource type="AudioStream" uid="uid://kn5rh27mxcvt" path="res://resources/music/menu_audio_stream.tres" id="2_dppw8"]
+[ext_resource type="AudioStream" uid="uid://bsiimap67gs0v" path="res://resources/music/game_audio_stream.tres" id="3_1n553"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_2h45r"]
+clip_count = 2
+clip_0/name = &"main_menu"
+clip_0/stream = ExtResource("2_dppw8")
+clip_0/auto_advance = 0
+clip_1/name = &"game"
+clip_1/stream = ExtResource("3_1n553")
+clip_1/auto_advance = 0
 
 [node name="ProjectMusicController" type="Node" unique_id=1628865114]
 process_mode = 3
 script = ExtResource("1_wbudo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=333363265]
+stream = SubResource("AudioStreamInteractive_2h45r")
+autoplay = true

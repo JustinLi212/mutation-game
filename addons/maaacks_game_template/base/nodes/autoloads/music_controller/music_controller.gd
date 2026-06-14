@@ -30,9 +30,10 @@ const MINIMUM_VOLUME_DB = -80
 ## Matched stream players with no stream set will stop current playback.
 @export var empty_streams_stop_player : bool = true
 
-var music_stream_player : AudioStreamPlayer
 var blend_audio_bus : StringName
 var blend_audio_bus_idx : int
+
+@onready var music_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func fade_out(duration : float = 0.0) -> Tween:
 	if is_zero_approx(duration): return
@@ -97,32 +98,6 @@ func _connect_stream_on_tree_exiting(stream_player : AudioStreamPlayer) -> void:
 	if not stream_player.tree_exiting.is_connected(_on_removed_music_player.bind(stream_player)):
 		stream_player.tree_exiting.connect(_on_removed_music_player.bind(stream_player))
 
-func _blend_and_remove_stream_player(stream_player : AudioStreamPlayer) -> void:
-	var playback_position := music_stream_player.get_playback_position() + AudioServer.get_time_since_last_mix()
-	var old_stream_player = music_stream_player
-	music_stream_player = stream_player
-	music_stream_player.bus = blend_audio_bus
-	play(playback_position)
-	old_stream_player.stop()
-	old_stream_player.queue_free()
-	_connect_stream_on_tree_exiting(music_stream_player)
-
-func _blend_and_connect_stream_player(stream_player : AudioStreamPlayer) -> void:
-	stream_player.bus = blend_audio_bus
-	_fade_out_and_free()
-	music_stream_player = stream_player
-	_play_and_fade_in()
-	_connect_stream_on_tree_exiting(music_stream_player)
-
-func play_stream_player(stream_player : AudioStreamPlayer) -> void:
-	if stream_player == music_stream_player : return
-	if stream_player.stream == null and not empty_streams_stop_player:
-			return
-	if _is_matching_stream(stream_player) : 
-		_blend_and_remove_stream_player(stream_player)
-	else:
-		_blend_and_connect_stream_player(stream_player)
-
 func get_stream_player(audio_stream : AudioStream) -> AudioStreamPlayer:
 	var stream_player := AudioStreamPlayer.new()
 	stream_player.stream = audio_stream
@@ -133,13 +108,12 @@ func get_stream_player(audio_stream : AudioStream) -> AudioStreamPlayer:
 func play_stream(audio_stream : AudioStream) -> AudioStreamPlayer:
 	var stream_player := get_stream_player(audio_stream)
 	stream_player.play.call_deferred()
-	play_stream_player( stream_player )
+	stream_player.play()
 	return stream_player
 
 func _clone_music_player(stream_player : AudioStreamPlayer) -> void:
 	var playback_position := stream_player.get_playback_position() + AudioServer.get_time_since_last_mix()
 	var audio_stream := stream_player.stream
-	music_stream_player = get_stream_player(audio_stream)
 	music_stream_player.volume_db = stream_player.volume_db
 	music_stream_player.max_polyphony = stream_player.max_polyphony
 	music_stream_player.pitch_scale = stream_player.pitch_scale
@@ -166,7 +140,6 @@ func _on_removed_music_player(node: Node) -> void:
 func _on_added_music_player(node: Node) -> void:
 	if node == music_stream_player : return
 	if not (_node_matches_checks(node)) : return
-	play_stream_player(node)
 
 func _enter_tree() -> void:
 	AudioServer.add_bus()
