@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnvogg5ej3h1w"
-path="res://.godot/imported/GWJ-Logo1.png-02c0f71748b487f5764057ce17b05ddc.ctex"
+uid="uid://cgxl2r07ieyjd"
+path="res://.godot/imported/GWJ-Full-Logo-tag-Orange2.svg-0055547fb31b0875cd7ca96fb27fae72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/git_logo/GWJ-Logo1.png"
-dest_files=["res://.godot/imported/GWJ-Logo1.png-02c0f71748b487f5764057ce17b05ddc.ctex"]
+source_file="res://assets/logos/gwj_logo/GWJ-Full-Logo-tag-Orange2.svg"
+dest_files=["res://.godot/imported/GWJ-Full-Logo-tag-Orange2.svg-0055547fb31b0875cd7ca96fb27fae72.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

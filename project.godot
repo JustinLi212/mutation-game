@@ -37,6 +37,7 @@ enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
 
 [gui]
 
+theme/custom="uid://2qh3aix7i37a"
 common/drop_mouse_on_gui_input_disabled=true
 
 [input]
