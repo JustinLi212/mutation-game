@@ -3,11 +3,18 @@
 [ext_resource type="Script" uid="uid://bncysulf28uu7" path="res://autoloads/audio_manager.gd" id="1_tr7pb"]
 [ext_resource type="AudioStream" uid="uid://bs2bd1k3p2a0p" path="res://assets/music/mutation_menu.ogg" id="2_alnp1"]
 
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_alnp1"]
+stream_count = 1
+stream_0/volume = 0.0
+
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_xdfsh"]
-clip_count = 1
+clip_count = 2
 clip_0/name = &"main_menu"
 clip_0/stream = ExtResource("2_alnp1")
 clip_0/auto_advance = 0
+clip_1/name = &"game"
+clip_1/stream = SubResource("AudioStreamSynchronized_alnp1")
+clip_1/auto_advance = 0
 
 [node name="AudioManager" type="Node" unique_id=1780269662]
 script = ExtResource("1_tr7pb")

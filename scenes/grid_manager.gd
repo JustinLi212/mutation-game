@@ -3,6 +3,7 @@ extends Node2D
 
 var current_grids: Array[int]
 var current_players: Array[int]
+var possible_squares: Array[Vector2i]
 
 
 func _ready() -> void:

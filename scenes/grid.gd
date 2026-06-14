@@ -15,6 +15,8 @@ func _ready() -> void:
 	player.grid_shaken.connect(_on_grid_shaken)
 	for label in labels.get_children():
 		label.text = "%d" % grid_number
+		if grid_number == 6 or grid_number == 9:
+			label.text = "[u]%d[/u]" % grid_number
 	base_pos = global_position
 
 

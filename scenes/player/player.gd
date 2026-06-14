@@ -14,7 +14,7 @@ var can_move: bool = false
 @onready var sprite: Sprite2D = $Sprite2D
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	global_rotation_degrees = 0.0
 
 
