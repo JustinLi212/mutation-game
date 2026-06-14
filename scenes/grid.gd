@@ -6,14 +6,16 @@ extends AnimatableBody2D
 var is_active: bool = false
 var shake_tween: Tween
 var SHAKE_AMOUNT: float = 5.0
+var base_pos: Vector2
 
 @onready var labels: Node2D = $GridLabels
 @onready var player: Player = $Player
 
 func _ready() -> void:
+	player.grid_shaken.connect(_on_grid_shaken)
 	for label in labels.get_children():
 		label.text = "%d" % grid_number
-	player.grid_shaken.connect(_on_grid_shaken)
+	base_pos = global_position
 
 
 func _on_grid_shaken(dir: Vector2) -> void:
@@ -22,4 +24,4 @@ func _on_grid_shaken(dir: Vector2) -> void:
 		return
 	shake_tween = create_tween()
 	shake_tween.tween_property(self, "global_position", dir * SHAKE_AMOUNT, 0.1).as_relative()
-	shake_tween.tween_property(self, "global_position", -dir * SHAKE_AMOUNT, 0.1).as_relative()
+	shake_tween.tween_property(self, "global_position", base_pos, 0.1)
