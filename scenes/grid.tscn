@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://6q0egmwc1vs5"]
 
 [ext_resource type="Script" uid="uid://dl556yt0ouwgn" path="res://scenes/grid.gd" id="1_2s7k2"]
-[ext_resource type="Texture2D" uid="uid://h8t34ms5hkmv" path="res://assets/Grid.png" id="1_t5fjg"]
+[ext_resource type="Texture2D" uid="uid://h8t34ms5hkmv" path="res://assets/art/grid.png" id="1_t5fjg"]
 [ext_resource type="PackedScene" uid="uid://cigqx6eyt650v" path="res://scenes/player/player.tscn" id="2_w88cy"]
 
 [node name="Grid" type="AnimatableBody2D" unique_id=1141323151]
