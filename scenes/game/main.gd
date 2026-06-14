@@ -5,8 +5,6 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.add_grid_and_player(5)
-	#await get_tree().create_timer(2.0, false).timeout
-	#GameManager.add_grid_and_player(4)
-	#await get_tree().create_timer(4.0, false).timeout
-	#for i in range(10):
-		#GameManager.add_grid_and_player(i)
+	await get_tree().create_timer(2.0, false).timeout
+	for i in range(10):
+		GameManager.add_grid_and_player(i)

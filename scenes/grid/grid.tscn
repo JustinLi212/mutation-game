@@ -30,14 +30,15 @@ fit_content = true
 scroll_active = false
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="GridLabels" unique_id=540429973]
-offset_left = 67.0
+offset_left = 59.0
 offset_top = -83.0
-offset_right = 85.0
+offset_right = 77.0
 offset_bottom = -59.0
 bbcode_enabled = true
 text = "1"
 fit_content = true
 scroll_active = false
+horizontal_alignment = 2
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="GridLabels" unique_id=964335486]
 offset_left = -77.0
@@ -50,11 +51,12 @@ fit_content = true
 scroll_active = false
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="GridLabels" unique_id=1321992681]
-offset_left = 67.0
+offset_left = 59.0
 offset_top = 60.0
-offset_right = 85.0
+offset_right = 77.0
 offset_bottom = 84.0
 bbcode_enabled = true
 text = "1"
 fit_content = true
 scroll_active = false
+horizontal_alignment = 2
