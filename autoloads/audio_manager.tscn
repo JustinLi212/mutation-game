@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dr7m12q3iiww5"]
+
+[ext_resource type="Script" uid="uid://bncysulf28uu7" path="res://autoloads/audio_manager.gd" id="1_tr7pb"]
+[ext_resource type="AudioStream" uid="uid://bs2bd1k3p2a0p" path="res://assets/music/mutation_menu.ogg" id="2_alnp1"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_xdfsh"]
+clip_count = 1
+clip_0/name = &"main_menu"
+clip_0/stream = ExtResource("2_alnp1")
+clip_0/auto_advance = 0
+
+[node name="AudioManager" type="Node" unique_id=1780269662]
+script = ExtResource("1_tr7pb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1360303689]
+stream = SubResource("AudioStreamInteractive_xdfsh")
+autoplay = true

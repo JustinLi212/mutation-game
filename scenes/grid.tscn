@@ -17,11 +17,44 @@ polygon = PackedVector2Array(-56, -56, -56, 56, 56, 56, 56, -56)
 [node name="Player" parent="." unique_id=1433435650 instance=ExtResource("2_w88cy")]
 motion_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1198657107]
+[node name="GridLabels" type="Node2D" parent="." unique_id=43918951]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GridLabels" unique_id=1198657107]
 offset_left = -77.0
 offset_top = -83.0
-offset_right = -61.0
-offset_bottom = -60.0
+offset_right = -59.0
+offset_bottom = -59.0
 bbcode_enabled = true
 text = "1"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="GridLabels" unique_id=540429973]
+offset_left = 67.0
+offset_top = -83.0
+offset_right = 85.0
+offset_bottom = -59.0
+bbcode_enabled = true
+text = "1"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="GridLabels" unique_id=964335486]
+offset_left = -77.0
+offset_top = 60.0
+offset_right = -59.0
+offset_bottom = 84.0
+bbcode_enabled = true
+text = "1"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="GridLabels" unique_id=1321992681]
+offset_left = 67.0
+offset_top = 60.0
+offset_right = 85.0
+offset_bottom = 84.0
+bbcode_enabled = true
+text = "1"
+fit_content = true
 scroll_active = false

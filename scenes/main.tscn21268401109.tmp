@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cokeq10e2nnpt"]
+
+[ext_resource type="Script" uid="uid://lrmwjyn2v6h1" path="res://scenes/grid_manager.gd" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://6q0egmwc1vs5" path="res://scenes/grid.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://pg34afj0neua" path="res://scenes/main.gd" id="1_sugp2"]
+
+[node name="Main" type="Node2D" unique_id=1235094678]
+script = ExtResource("1_sugp2")
+
+[node name="BG" type="CanvasLayer" parent="." unique_id=699080488]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="BG" unique_id=2135291603]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="BG" unique_id=1916624018]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 280.0
+offset_right = -280.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=516673177]
+
+[node name="Grids" type="Node2D" parent="." unique_id=1358162274]
+position = Vector2(640, 360)
+script = ExtResource("1_0wfyh")
+
+[node name="Grid1" parent="Grids" unique_id=1141323151 instance=ExtResource("1_o5qli")]
+position = Vector2(-185, -185)
+
+[node name="Grid2" parent="Grids" unique_id=634648047 instance=ExtResource("1_o5qli")]
+position = Vector2(0, -185)
+grid_number = 2
+
+[node name="Grid3" parent="Grids" unique_id=182473328 instance=ExtResource("1_o5qli")]
+position = Vector2(185, -185)
+grid_number = 3
+
+[node name="Grid4" parent="Grids" unique_id=1601966557 instance=ExtResource("1_o5qli")]
+position = Vector2(-185, 0)
+grid_number = 4
+
+[node name="Grid5" parent="Grids" unique_id=362178315 instance=ExtResource("1_o5qli")]
+grid_number = 5
+
+[node name="Grid6" parent="Grids" unique_id=469357867 instance=ExtResource("1_o5qli")]
+position = Vector2(185, 0)
+grid_number = 6
+
+[node name="Grid7" parent="Grids" unique_id=773556157 instance=ExtResource("1_o5qli")]
+position = Vector2(-185, 185)
+grid_number = 7
+
+[node name="Grid8" parent="Grids" unique_id=575894669 instance=ExtResource("1_o5qli")]
+position = Vector2(0, 185)
+grid_number = 8
+
+[node name="Grid9" parent="Grids" unique_id=18646918 instance=ExtResource("1_o5qli")]
+position = Vector2(185, 185)
+grid_number = 9
