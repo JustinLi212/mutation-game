@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Mutation Game"
 run/main_scene="uid://bk80fxrac0p3i"
-config/features=PackedStringArray("4.6")
+config/features=PackedStringArray("4.7")
 config/icon="uid://h8t34ms5hkmv"
 
 [autoload]

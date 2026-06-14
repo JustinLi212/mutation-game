@@ -9,7 +9,6 @@
 script = ExtResource("2_2v40y")
 main_menu_scene_path = ""
 force_mouse_mode_visible = false
-scroll_paused = true
 
 [node name="BackgroundMusicPlayer" parent="." index="0" unique_id=694489322 instance=ExtResource("3_bfvdl")]
 
@@ -33,13 +32,14 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ScrollContainer" parent="." index="3" unique_id=392334416]
-scroll_vertical = 1454
+scroll_vertical = 69
 
 [node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(1082586754) index="1" unique_id=962973358]
-text = "[font_size=48]Collaborators[/font_size]
+text = "[font_size=64]Credits[/font_size]
+[font_size=32]made by BirbWatch[/font_size]
 
 [font_size=32]Godot Game Template[/font_size]
-[img=80]res:///assets/plugin_logo/logo.png[/img]  
+[img=80]res:///assets/logos/plugin_logo/logo.png[/img]  
 Author: [url=https://github.com/Maaack/Godot-Game-Template/graphs/contributors]Marek Belski and contributors[/url]  
 Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]  
 License: [url=LICENSE.txt]MIT License[/url]  
@@ -57,18 +57,13 @@ License: [url=https://creativecommons.org/licenses/by/3.0/]CC BY 3.0[/url]
 
 [font_size=48]Tools[/font_size]
 [font_size=24]Godot[/font_size]
-[img=80]res:///assets/godot_engine_logo/logo_vertical_color_dark.png[/img]  
+[img=80]res:///assets/logos/godot_engine_logo/logo_vertical_color_dark.png[/img]  
 Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
 Source: [url=https://godotengine.org/]godotengine.org[/url]  
-License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url]  
-
-[font_size=24]Visual Studio Code[/font_size]
-Author: [url=https://opensource.microsoft.com/]Microsoft[/url]  
-Source: [url=https://github.com/microsoft/vscode]github: vscode[/url]  
-License: [url=https://github.com/microsoft/vscode/blob/main/LICENSE.txt]MIT License[/url]
+License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url]
 
 [font_size=24]Git[/font_size]
-[img=80]res:///assets/git_logo/Git-Logo-2Color.png[/img]  
+[img=80]res:///assets/logos/git_logo/Git-Logo-2Color.png[/img]  
 Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
 Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
 License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
@@ -84,6 +79,7 @@ mouse_filter = 2
 
 [node name="EndMessagePanel" type="Panel" parent="CenterContainer" index="0" unique_id=1272765948]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(360, 120)
 layout_mode = 2
 
