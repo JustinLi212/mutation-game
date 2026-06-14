@@ -21,22 +21,22 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if not can_move:
 		return
-	if event.is_action_pressed("left"):
+	if event.is_action_pressed("move_left"):
 		if not $LeftRayCast.is_colliding():
 			_move(Vector2.LEFT)
 		else:
 			_shake_grid(Vector2.LEFT)
-	if event.is_action_pressed("right"):
+	if event.is_action_pressed("move_right"):
 		if not $RightRayCast.is_colliding():
 			_move(Vector2.RIGHT)
 		else:
 			_shake_grid(Vector2.RIGHT)
-	if event.is_action_pressed("up"):
+	if event.is_action_pressed("move_up"):
 		if not $UpRayCast.is_colliding():
 			_move(Vector2.UP)
 		else:
 			_shake_grid(Vector2.UP)
-	if event.is_action_pressed("down"):
+	if event.is_action_pressed("move_down"):
 		if not $DownRayCast.is_colliding():
 			_move(Vector2.DOWN)
 		else:
