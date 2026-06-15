@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://6q0egmwc1vs5" path="res://scenes/game_scene/grid/grid.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://pg34afj0neua" path="res://scenes/game_scene/main.gd" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://c7eltf6uef1c6" path="res://scenes/game_scene/game_ui/active_players.gd" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="5_1vxbo"]
+[ext_resource type="AudioStream" uid="uid://bsiimap67gs0v" path="res://resources/music/game_audio_stream.tres" id="5_bt4sa"]
 
 [node name="Main" type="Node2D" unique_id=1235094678]
 script = ExtResource("1_sugp2")
@@ -152,3 +154,6 @@ grid_number = 8
 [node name="Grid9" parent="Grids" unique_id=18646918 instance=ExtResource("1_o5qli")]
 position = Vector2(185, -185)
 grid_number = 9
+
+[node name="BackgroundMusicPlayer" parent="." unique_id=1446051342 instance=ExtResource("5_1vxbo")]
+stream = ExtResource("5_bt4sa")

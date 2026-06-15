@@ -1,8 +1,9 @@
 [gd_resource type="AudioStreamSynchronized" format=3 uid="uid://bsiimap67gs0v"]
 
-[ext_resource type="AudioStream" uid="uid://bs2bd1k3p2a0p" path="res://assets/music/mutation_menu.ogg" id="1_sssxm"]
+[ext_resource type="AudioStream" uid="uid://3cquer8e423q" path="res://assets/music/game_bg.ogg" id="1_x3pl0"]
 
 [resource]
-stream_count = 1
-stream_0/stream = ExtResource("1_sssxm")
+stream_count = 2
+stream_0/stream = ExtResource("1_x3pl0")
 stream_0/volume = 0.0
+stream_1/volume = 0.0
