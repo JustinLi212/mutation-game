@@ -9,6 +9,7 @@
 script = ExtResource("2_2v40y")
 main_menu_scene_path = ""
 force_mouse_mode_visible = false
+scroll_paused = true
 
 [node name="BackgroundMusicPlayer" parent="." index="0" unique_id=694489322 instance=ExtResource("3_bfvdl")]
 
@@ -32,7 +33,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ScrollContainer" parent="." index="3" unique_id=392334416]
-scroll_vertical = 69
+scroll_vertical = 1587
 
 [node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(1082586754) index="1" unique_id=962973358]
 text = "[font_size=64]Credits[/font_size]
@@ -79,7 +80,6 @@ mouse_filter = 2
 
 [node name="EndMessagePanel" type="Panel" parent="CenterContainer" index="0" unique_id=1272765948]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(360, 120)
 layout_mode = 2
 
