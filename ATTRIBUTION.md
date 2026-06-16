@@ -5,6 +5,12 @@
 ### programming, audio, art, everything made by YOURS TRULY ([BirbWatch](https://birbwatch.itch.io/))
 
 ## Tools
+#### Dialogic
+![Dialogic Logo](/addons/dialogic/Editor/Images/dialogic-logo.svg)
+Author: [Jowan-Spooner, Emilio Coppola, and contributors](https://github.com/dialogic-godot/dialogic/graphs/contributors)
+Source: [github: dialogic](https://github.com/dialogic-godot/dialogic)
+License: [MIT License](https://github.com/godotengine/godot/blob/master/LICENSE.txt)
+
 #### Godot
 ![Godot Engine Logo](/assets/logos/godot_engine_logo/logo_vertical_color_dark.png)
 Author: [Juan Linietsky, Ariel Manzur, and contributors](https://godotengine.org/contact)
