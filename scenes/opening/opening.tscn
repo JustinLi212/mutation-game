@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d0tc7rhmasoth" path="res://assets/logos/gwj_logo/wild_jam_texture.tres" id="2_ke3tw"]
 [ext_resource type="AudioStream" uid="uid://kn5rh27mxcvt" path="res://resources/music/menu_audio_stream.tres" id="3_yhkvs"]
 
-[node name="Opening" unique_id=684202726 instance=ExtResource("1_l1wh1")]
+[node name="Opening" unique_id=1930105641 instance=ExtResource("1_l1wh1")]
 images = Array[Texture2D]([ExtResource("2_ke3tw")])
 
 [node name="BackgroundMusicPlayer" parent="." index="0" unique_id=1317385298]

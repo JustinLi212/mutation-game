@@ -7,7 +7,7 @@ var random_events: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	await get_tree().physics_frame
+	await get_tree().create_timer(0.1, false).timeout
 	GameManager.add_grid_and_player(5)
 	await get_tree().create_timer(2.0, false).timeout
 	laser.shoot()
