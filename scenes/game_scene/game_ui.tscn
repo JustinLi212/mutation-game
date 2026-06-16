@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/nodes/utilities/pause_menu_controller.gd" id="1_bmy5n"]
 [ext_resource type="PackedScene" uid="uid://wm2nmhcpk5qp" path="res://scenes/windows/pause_menu_layer.tscn" id="2_7aihr"]
-[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="3_3re04"]
 [ext_resource type="PackedScene" uid="uid://cokeq10e2nnpt" path="res://scenes/game_scene/main.tscn" id="5_ul61k"]
 [ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="7_vbgr5"]
 [ext_resource type="Script" uid="uid://bnhmjy582mlax" path="res://scenes/game_scene/configurable_sub_viewport.gd" id="11_ulq3g"]
@@ -49,8 +48,6 @@ grow_vertical = 2
 script = ExtResource("1_bmy5n")
 pause_menu_packed = ExtResource("2_7aihr")
 focused_viewport = NodePath("../ViewportContainer/ConfigurableSubViewport")
-
-[node name="BackgroundMusicPlayer" parent="." unique_id=448547113 instance=ExtResource("3_3re04")]
 
 [node name="ViewportContainer" type="SubViewportContainer" parent="." unique_id=1836092927]
 layout_mode = 1

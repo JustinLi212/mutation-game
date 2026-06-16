@@ -1,5 +1,5 @@
 extends Node
 
-var _event_scenes: Dictionary = {}
+@onready var background_music_player: AudioStreamPlayer = $"../BackgroundMusicPlayer"
 
-var event_scenes: Dictionary
+var random_events: bool = false
