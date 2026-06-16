@@ -36,7 +36,7 @@ animations = [{
 [node name="Grid" type="AnimatableBody2D" unique_id=1141323151]
 script = ExtResource("1_6ejo2")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1077239333]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1077239333]
 sprite_frames = SubResource("SpriteFrames_2h45r")
 autoplay = "default"
 frame_progress = 0.9051903
@@ -91,3 +91,5 @@ text = "1"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 2
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

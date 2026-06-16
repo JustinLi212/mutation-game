@@ -27,3 +27,7 @@ func _on_grid_shaken(dir: Vector2) -> void:
 	shake_tween = create_tween()
 	shake_tween.tween_property(self, "global_position", dir * SHAKE_AMOUNT, 0.1).as_relative()
 	shake_tween.tween_property(self, "global_position", base_pos, 0.1)
+
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	$AnimatedSprite2D.rotation_degrees = randi_range(0, 3) * 90
