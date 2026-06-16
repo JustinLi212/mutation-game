@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b70k3m1utqn6g"]
 
-[ext_resource type="Script" path="res://scenes/credits/scrolling_credits.gd" id="1_hgjqm"]
-[ext_resource type="PackedScene" path="res://scenes/credits/credits_label.tscn" id="2_cxj1u"]
+[ext_resource type="Script" uid="uid://bqccxi4j7r5dn" path="res://scenes/credits/scrolling_credits.gd" id="1_hgjqm"]
+[ext_resource type="PackedScene" uid="uid://jljc733whdom" path="res://scenes/credits/credits_label.tscn" id="2_cxj1u"]
 
 [node name="ScrollingCredits" type="Control" unique_id=1162279489]
 layout_mode = 3
@@ -17,7 +17,7 @@ unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-scroll_vertical = 246
+scroll_vertical = 542
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
@@ -34,42 +34,29 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1280, 0)
 layout_mode = 2
-text = "[font_size=48]Collaborators[/font_size]
+text = "
+[font_size=64]Credits[/font_size]
 
-[font_size=32]Godot Game Template[/font_size]
-[img=80]uid://cf77mc07j26a4[/img]  
-Author: [url=https://github.com/Maaack/Godot-Game-Template/graphs/contributors]Marek Belski and contributors[/url]  
-Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]  
-License: [url=LICENSE.txt]MIT License[/url]  
-
-[font_size=48]Sourced[/font_size]
-[font_size=24]Godot Engine Logo[/font_size]
-Author: Andrea Calabró  
-Source: [url=https://godotengine.org/press/]godotengine.org : press[/url]  
-License: [url=https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt]CC BY 4.0 International[/url] 
-
-[font_size=24]Git Logo[/font_size]
-Author: [url=https://bsky.app/profile/jasonlong.me]Jason Long[/url]  
-Source: [url=https://git-scm.com/downloads/logos]git-scm.com : logos[/url]  
-License: [url=https://creativecommons.org/licenses/by/3.0/]CC BY 3.0[/url] 
+[font_size=32]programming, audio, art, everything made by YOURS TRULY ([url=https://birbwatch.itch.io/]BirbWatch[/url])[/font_size]
 
 [font_size=48]Tools[/font_size]
+[font_size=24]Dialogic[/font_size]
+[img=80]res:///addons/dialogic/Editor/Images/dialogic-logo.svg[/img]
+Author: [url=https://github.com/dialogic-godot/dialogic/graphs/contributors]Jowan-Spooner, Emilio Coppola, and contributors[/url]
+Source: [url=https://github.com/dialogic-godot/dialogic]github: dialogic[/url]
+License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url]
+
 [font_size=24]Godot[/font_size]
-[img=80]uid://daput5j66exgu[/img]  
-Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
-Source: [url=https://godotengine.org/]godotengine.org[/url]  
-License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url]  
+[img=80]res:///assets/logos/godot_engine_logo/logo_vertical_color_dark.png[/img]
+Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]
+Source: [url=https://godotengine.org/]godotengine.org[/url]
+License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url]
 
-[font_size=24]Visual Studio Code[/font_size]
-Author: [url=https://opensource.microsoft.com/]Microsoft[/url]  
-Source: [url=https://github.com/microsoft/vscode]github: vscode[/url]  
-License: [url=https://github.com/microsoft/vscode/blob/main/LICENSE.txt]MIT License[/url]
-
-[font_size=24]Git[/font_size]
-[img=80]uid://bxp0lwwu2vfar[/img]  
-Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
-Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
-License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
+[font_size=24]Godot Game Template[/font_size]
+[img=80]res:///assets/logos/plugin_logo/logo.png[/img]
+Author: [url=https://github.com/Maaack/Godot-Game-Template/graphs/contributors]Marek Belski and contributors[/url]
+Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]
+License: [url=LICENSE.txt]MIT License[/url]
 "
 
 [node name="FooterSpace" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=1703782196]

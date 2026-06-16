@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://cegpeogqhswj3"]
 
-[ext_resource type="PackedScene" path="res://scenes/credits/scrolling_credits.tscn" id="1_0sycx"]
-[ext_resource type="Script" path="res://scenes/end_credits/end_credits.gd" id="2_2v40y"]
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="3_bfvdl"]
-[ext_resource type="Script" path="res://addons/maaacks_game_template/base/nodes/utilities/capture_focus.gd" id="4_1kqi1"]
+[ext_resource type="PackedScene" uid="uid://b70k3m1utqn6g" path="res://scenes/credits/scrolling_credits.tscn" id="1_0sycx"]
+[ext_resource type="Script" uid="uid://br1857twdktc8" path="res://scenes/end_credits/end_credits.gd" id="2_2v40y"]
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="3_bfvdl"]
+[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_game_template/base/nodes/utilities/capture_focus.gd" id="4_1kqi1"]
 
 [node name="EndCredits" unique_id=613298766 instance=ExtResource("1_0sycx")]
 script = ExtResource("2_2v40y")
 main_menu_scene_path = ""
 force_mouse_mode_visible = false
+scroll_paused = true
 
 [node name="BackgroundMusicPlayer" parent="." index="0" unique_id=1411252862 instance=ExtResource("3_bfvdl")]
 
@@ -31,6 +32,35 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
+[node name="ScrollContainer" parent="." index="3" unique_id=1039720129]
+scroll_vertical = 1357
+
+[node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(2067921385) index="1" unique_id=1486745388]
+text = "
+[font_size=64]Credits[/font_size]
+
+[font_size=32]programming, audio, art, everything made by YOURS TRULY ([url=https://birbwatch.itch.io/]BirbWatch[/url])[/font_size]
+
+[font_size=48]Tools[/font_size]
+[font_size=24]Dialogic[/font_size]
+[img=80]res:///addons/dialogic/Editor/Images/dialogic-logo.svg[/img]
+Author: [url=https://github.com/dialogic-godot/dialogic/graphs/contributors]Jowan-Spooner, Emilio Coppola, and contributors[/url]
+Source: [url=https://github.com/dialogic-godot/dialogic]github: dialogic[/url]
+License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url]
+
+[font_size=24]Godot[/font_size]
+[img=80]res:///assets/logos/godot_engine_logo/logo_vertical_color_dark.png[/img]
+Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]
+Source: [url=https://godotengine.org/]godotengine.org[/url]
+License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url]
+
+[font_size=24]Godot Game Template[/font_size]
+[img=80]res:///assets/logos/plugin_logo/logo.png[/img]
+Author: [url=https://github.com/Maaack/Godot-Game-Template/graphs/contributors]Marek Belski and contributors[/url]
+Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]
+License: [url=LICENSE.txt]MIT License[/url]
+"
+
 [node name="CenterContainer" type="CenterContainer" parent="." index="4" unique_id=535959837]
 layout_mode = 0
 anchor_right = 1.0
@@ -41,7 +71,6 @@ mouse_filter = 2
 
 [node name="EndMessagePanel" type="Panel" parent="CenterContainer" index="0" unique_id=680051131]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(360, 120)
 layout_mode = 2
 
