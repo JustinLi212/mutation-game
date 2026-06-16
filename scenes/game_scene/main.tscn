@@ -6,10 +6,41 @@
 [ext_resource type="Script" uid="uid://c7eltf6uef1c6" path="res://scenes/game_scene/game_ui/active_players.gd" id="2_jyhfs"]
 [ext_resource type="Script" uid="uid://1sa3u3w6h04a" path="res://scenes/game_scene/events/event_manager.gd" id="4_556hl"]
 [ext_resource type="Script" uid="uid://bl2qrwic8jwm" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.gd" id="4_k8he3"]
+[ext_resource type="AudioStream" uid="uid://dy3vavquw5ghj" path="res://assets/music/game_pause.ogg" id="4_wti3h"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="5_1vxbo"]
 [ext_resource type="AudioStream" uid="uid://bsiimap67gs0v" path="res://resources/music/game_audio_stream.tres" id="5_bt4sa"]
+[ext_resource type="AudioStream" uid="uid://mtfgrckwbujr" path="res://assets/music/pause_transition.ogg" id="5_xceeg"]
 [ext_resource type="PackedScene" uid="uid://b84qi58m470pt" path="res://scenes/game_scene/events/laser.tscn" id="9_0bg0g"]
 [ext_resource type="Texture2D" uid="uid://cw57y634rulc7" path="res://assets/art/walls_sheet.png" id="10_q28bu"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_n4y2n"]
+clip_count = 3
+clip_0/name = &"game"
+clip_0/stream = ExtResource("5_bt4sa")
+clip_0/auto_advance = 0
+clip_1/name = &"pause"
+clip_1/stream = ExtResource("4_wti3h")
+clip_1/auto_advance = 0
+clip_2/name = &"pause transition"
+clip_2/stream = ExtResource("5_xceeg")
+clip_2/auto_advance = 0
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"filler_clip": 2,
+"from_time": 0,
+"hold_previous": true,
+"to_time": 0,
+"use_filler_clip": true
+},
+Vector2i(1, 0): {
+"fade_beats": 0.5,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 2
+}
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_brcv1"]
 atlas = ExtResource("10_q28bu")
@@ -143,9 +174,11 @@ animations = [{
 script = ExtResource("1_sugp2")
 
 [node name="BackgroundMusicPlayer" parent="." unique_id=1446051342 instance=ExtResource("5_1vxbo")]
-process_mode = 1
-stream = ExtResource("5_bt4sa")
+stream = SubResource("AudioStreamInteractive_n4y2n")
 script = ExtResource("4_k8he3")
+
+[node name="MusicTimer" type="Timer" parent="BackgroundMusicPlayer" unique_id=1061612797]
+wait_time = 8.0
 
 [node name="EventManager" type="Node" parent="." unique_id=781200245]
 script = ExtResource("4_556hl")
