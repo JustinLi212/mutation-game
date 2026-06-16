@@ -17,12 +17,12 @@ config/icon="uid://h8t34ms5hkmv"
 
 [autoload]
 
-AppConfig="*res://autoloads/app_config/app_config.tscn"
-SceneLoader="*res://autoloads/scene_loader/scene_loader.tscn"
-ProjectMusicController="*res://autoloads/music_controller/project_music_controller.tscn"
-ProjectUISoundController="*res://autoloads/ui_sound_controller/project_ui_sound_controller.tscn"
 GameManager="*uid://dydiws25tny73"
 EventBus="*uid://cf7pey8wj1n8s"
+AppConfig="*uid://cjke6crjg14a0"
+SceneLoader="*uid://cbwmrnp0af35y"
+ProjectMusicController="*uid://r5t485lr3p7t"
+ProjectUISoundController="*uid://cc37235kj4384"
 
 [display]
 
