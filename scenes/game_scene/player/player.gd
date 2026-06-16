@@ -10,12 +10,12 @@ const tile_size = Vector2(37, 37)
 var tween_time: float = 0.05
 var sprite_tween: Tween
 var can_move: bool = false
+var alive: bool = false:
+	set(value):
+		alive = value
+		$CollisionShape2D.set_deferred("disabled", not alive)
 
 @onready var sprite: Sprite2D = $Sprite2D
-
-
-func _process(_delta: float) -> void:
-	global_rotation_degrees = 0.0
 
 
 func _input(event: InputEvent) -> void:

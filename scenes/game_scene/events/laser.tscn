@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://b84qi58m470pt"]
+
+[ext_resource type="Script" uid="uid://ocxv3d8ln8eo" path="res://scenes/game_scene/events/laser.gd" id="1_1pcrl"]
+[ext_resource type="Texture2D" uid="uid://belltw42trb1b" path="res://assets/art/laser/laser_sheet.png" id="1_hlqbt"]
+[ext_resource type="Texture2D" uid="uid://fuac2oe3t8it" path="res://assets/art/laser/circle1.png" id="2_b4y08"]
+[ext_resource type="Texture2D" uid="uid://cr8k5uj4pdj1y" path="res://assets/art/laser/circle2.png" id="3_dmlqs"]
+[ext_resource type="Texture2D" uid="uid://cbn1m1sqsp2o1" path="res://assets/art/laser/circle3.png" id="4_4otjj"]
+[ext_resource type="Texture2D" uid="uid://b5gj8fl67su6g" path="res://assets/art/laser/inner_circle1.png" id="5_darp7"]
+[ext_resource type="Texture2D" uid="uid://dw13q1r1g8a82" path="res://assets/art/laser/inner_circle2.png" id="6_1pcrl"]
+[ext_resource type="Texture2D" uid="uid://bf8abvyv3qywp" path="res://assets/art/laser/inner_circle3.png" id="7_205ux"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pcrl"]
+atlas = ExtResource("1_hlqbt")
+region = Rect2(0, 0, 13, 301)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_205ux"]
+atlas = ExtResource("1_hlqbt")
+region = Rect2(13, 0, 13, 301)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8msoa"]
+atlas = ExtResource("1_hlqbt")
+region = Rect2(26, 0, 13, 301)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfnon"]
+atlas = ExtResource("1_hlqbt")
+region = Rect2(39, 0, 13, 301)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76xwh"]
+atlas = ExtResource("1_hlqbt")
+region = Rect2(52, 0, 13, 301)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmemg"]
+atlas = ExtResource("1_hlqbt")
+region = Rect2(65, 0, 13, 301)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2h45r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pcrl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_205ux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8msoa")
+}],
+"loop": 1,
+"name": &"charge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfnon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76xwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmemg")
+}],
+"loop": 1,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2h45r"]
+size = Vector2(2, 690)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_v20na"]
+frames = 3
+frame_0/texture = ExtResource("2_b4y08")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("3_dmlqs")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("4_4otjj")
+frame_2/duration = 0.2
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_b4y08"]
+frames = 3
+frame_0/texture = ExtResource("5_darp7")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("6_1pcrl")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("7_205ux")
+frame_2/duration = 0.2
+
+[node name="Laser" type="Area2D" unique_id=2100784112]
+script = ExtResource("1_1pcrl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=312722910]
+modulate = Color(1, 1, 1, 0.34117648)
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2h45r")
+animation = &"shoot"
+autoplay = "charge"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2108111960]
+shape = SubResource("RectangleShape2D_2h45r")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1736981315]
+offset_left = -32.0
+offset_top = -353.0
+offset_right = 32.0
+offset_bottom = -289.0
+fill_mode = 5
+texture_under = SubResource("AnimatedTexture_v20na")
+texture_progress = SubResource("AnimatedTexture_b4y08")
+tint_under = Color(1, 0, 0, 1)
+tint_progress = Color(1, 1, 1, 0.5058824)
+
+[node name="TimeLeft" type="RichTextLabel" parent="TextureProgressBar" unique_id=1662872417]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -5.0
+offset_right = 67.0
+offset_bottom = 67.0
+theme_override_font_sizes/normal_font_size = 30
+text = "1.00"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=1481328841]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

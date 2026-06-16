@@ -21,6 +21,7 @@ func update_grids() -> void:
 		else:
 			make_grid_invisible(grid)
 			grid.player.can_move = false
+			grid.player.alive = false
 	current_grids = GameManager.active_grids.duplicate()
 
 
@@ -28,8 +29,10 @@ func update_players() -> void:
 	for grid: Grid in get_children():
 		if grid.grid_number in GameManager.active_players:
 			grid.player.can_move = true
+			grid.player.alive = true
 		else:
 			grid.player.can_move = false
+			grid.player.alive = false
 	current_players = GameManager.active_players.duplicate()
 
 

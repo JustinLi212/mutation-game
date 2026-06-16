@@ -67,10 +67,11 @@ render_target_update_mode = 4
 script = ExtResource("11_ulq3g")
 
 [node name="Main" parent="ViewportContainer/ConfigurableSubViewport" unique_id=1235094678 instance=ExtResource("5_ul61k")]
+texture_filter = 1
 
 [node name="GameTimer" type="Node" parent="." unique_id=885493004]
 script = SubResource("GDScript_y85d6")
 
-[node name="Node" type="Node" parent="." unique_id=795711931]
+[node name="WinLoseManager" type="Node" parent="." unique_id=795711931]
 script = ExtResource("7_vbgr5")
 main_menu_scene_path = "uid://conoq2gmylqvr"
