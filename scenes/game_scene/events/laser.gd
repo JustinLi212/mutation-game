@@ -3,7 +3,7 @@ extends Area2D
 
 const FADE_IN_TIME = 0.1
 const FADE_OUT_TIME = 0.1
-var charge_duration = 1.0
+var charge_duration = 2.0
 
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D

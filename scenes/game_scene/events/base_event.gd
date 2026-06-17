@@ -1,5 +1,5 @@
-class_name BaseEvent
-extends Node
+class_name Event
+extends Resource
 
 
 # Called when the node enters the scene tree for the first time.

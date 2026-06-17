@@ -6,8 +6,8 @@ func _ready() -> void:
 
 
 func update_players() -> void:
-	for label: RichTextLabel in get_children():
-		if int(label.text) in GameManager.active_players:
-			label.modulate.a = 1.0
+	for container: TextureRect in get_children():
+		if int(container.name) in GameManager.active_players:
+			container.modulate.a = 1.0
 		else:
-			label.modulate.a = 0.2
+			container.modulate.a = 0.2

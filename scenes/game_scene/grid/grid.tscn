@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dl556yt0ouwgn" path="res://scenes/game_scene/grid/grid.gd" id="1_6ejo2"]
 [ext_resource type="Texture2D" uid="uid://bbl1omry5bulr" path="res://assets/art/grid_sheet.png" id="2_6ejo2"]
+[ext_resource type="SpriteFrames" uid="uid://bnxtarawh1lx7" path="res://resources/number_frames.tres" id="3_csyyb"]
 [ext_resource type="PackedScene" uid="uid://cigqx6eyt650v" path="res://scenes/game_scene/player/player.tscn" id="3_deqi6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_csyyb"]
@@ -36,7 +37,7 @@ animations = [{
 [node name="Grid" type="AnimatableBody2D" unique_id=1141323151]
 script = ExtResource("1_6ejo2")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1077239333]
+[node name="GridSprite" type="AnimatedSprite2D" parent="." unique_id=1077239333]
 sprite_frames = SubResource("SpriteFrames_2h45r")
 autoplay = "default"
 frame_progress = 0.9051903
@@ -50,46 +51,28 @@ motion_mode = 1
 
 [node name="GridLabels" type="Node2D" parent="." unique_id=43918951]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GridLabels" unique_id=1198657107]
-offset_left = -77.0
-offset_top = -83.0
-offset_right = -59.0
-offset_bottom = -59.0
-bbcode_enabled = true
-text = "1"
-fit_content = true
-scroll_active = false
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GridLabels" unique_id=818206870]
+position = Vector2(-73, -65)
+scale = Vector2(0.25, 0.25)
+sprite_frames = ExtResource("3_csyyb")
+animation = &"1"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="GridLabels" unique_id=540429973]
-offset_left = 59.0
-offset_top = -83.0
-offset_right = 77.0
-offset_bottom = -59.0
-bbcode_enabled = true
-text = "1"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 2
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="GridLabels" unique_id=1051066276]
+position = Vector2(73, -65)
+scale = Vector2(0.25, 0.25)
+sprite_frames = ExtResource("3_csyyb")
+animation = &"1"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="GridLabels" unique_id=964335486]
-offset_left = -77.0
-offset_top = 60.0
-offset_right = -59.0
-offset_bottom = 84.0
-bbcode_enabled = true
-text = "1"
-fit_content = true
-scroll_active = false
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="GridLabels" unique_id=1287132194]
+position = Vector2(-72.99999, 64.99999)
+scale = Vector2(0.25, 0.25)
+sprite_frames = ExtResource("3_csyyb")
+animation = &"1"
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="GridLabels" unique_id=1321992681]
-offset_left = 59.0
-offset_top = 60.0
-offset_right = 77.0
-offset_bottom = 84.0
-bbcode_enabled = true
-text = "1"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 2
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="GridLabels" unique_id=149984122]
+position = Vector2(73, 65)
+scale = Vector2(0.25, 0.25)
+sprite_frames = ExtResource("3_csyyb")
+animation = &"1"
 
-[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="frame_changed" from="GridSprite" to="." method="_on_animated_sprite_2d_frame_changed"]

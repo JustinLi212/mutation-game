@@ -9,16 +9,21 @@ var SHAKE_AMOUNT: float = 5.0
 var SHAKE_TIME: float = 0.1
 var base_pos: Vector2
 
-@onready var labels: Node2D = $GridLabels
 @onready var player: Player = $Player
+@onready var grid_sprite: AnimatedSprite2D = $GridSprite
+@onready var grid_labels: Node2D = $GridLabels
+
 
 func _ready() -> void:
 	player.grid_shaken.connect(_on_grid_shaken)
-	for label in labels.get_children():
-		label.text = "%d" % grid_number
-		if grid_number == 6 or grid_number == 9:
-			label.text = "[u]%d[/u]" % grid_number
+	for sprite: AnimatedSprite2D in grid_labels.get_children():
+		sprite.animation = &"%d" % grid_number
+		sprite.play()
 	base_pos = global_position
+
+
+func _process(delta: float) -> void:
+	grid_labels.modulate.a = grid_sprite.modulate.a
 
 
 func _on_grid_shaken(dir: Vector2) -> void:
@@ -31,4 +36,4 @@ func _on_grid_shaken(dir: Vector2) -> void:
 
 
 func _on_animated_sprite_2d_frame_changed() -> void:
-	$AnimatedSprite2D.rotation_degrees = randi_range(0, 3) * 90
+	grid_sprite.rotation_degrees = randi_range(0, 3) * 90
