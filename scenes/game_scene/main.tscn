@@ -11,8 +11,13 @@
 [ext_resource type="AudioStream" uid="uid://bsiimap67gs0v" path="res://resources/music/game_audio_stream.tres" id="5_bt4sa"]
 [ext_resource type="AudioStream" uid="uid://mtfgrckwbujr" path="res://assets/music/pause_transition.ogg" id="5_xceeg"]
 [ext_resource type="Texture2D" uid="uid://pam248j4srtg" path="res://assets/art/active_players.png" id="8_65kuu"]
+[ext_resource type="AudioStream" uid="uid://cokpnpapsqea7" path="res://assets/sfx/pew/pew1.wav" id="8_f3u2c"]
+[ext_resource type="AudioStream" uid="uid://de7k2bmwgvx1d" path="res://assets/sfx/pew/pew2.wav" id="9_4ailo"]
 [ext_resource type="SpriteFrames" uid="uid://bnxtarawh1lx7" path="res://resources/number_frames.tres" id="9_xceeg"]
 [ext_resource type="Texture2D" uid="uid://cw57y634rulc7" path="res://assets/art/walls_sheet.png" id="10_q28bu"]
+[ext_resource type="AudioStream" uid="uid://cjwcfe0lujpto" path="res://assets/sfx/pew/pew3.wav" id="10_wo30k"]
+[ext_resource type="AudioStream" uid="uid://cx7l5l7tb0426" path="res://assets/sfx/pew/pew4.wav" id="11_eyhni"]
+[ext_resource type="AudioStream" uid="uid://m4phph7r2cnn" path="res://assets/sfx/pew/pew5.wav" id="12_v5hj3"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_65kuu"]
 clip_count = 2
@@ -206,6 +211,10 @@ script = ExtResource("4_k8he3")
 
 [node name="GunshotManager" type="Node" parent="." unique_id=781200245]
 script = ExtResource("4_556hl")
+gun_noises = Array[AudioStreamWAV]([ExtResource("8_f3u2c"), ExtResource("9_4ailo"), ExtResource("10_wo30k"), ExtResource("11_eyhni"), ExtResource("12_v5hj3")])
+
+[node name="PewSFXPlayer" type="AudioStreamPlayer" parent="GunshotManager" unique_id=1118284611]
+bus = &"SFX"
 
 [node name="BG" type="CanvasLayer" parent="." unique_id=699080488]
 layer = -1

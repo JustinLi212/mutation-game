@@ -50,11 +50,11 @@ func get_grid(grid_number: int) -> Grid:
 	return null
 
 
-func add_gunshot(grid_number: int, cell: Vector2i) -> void:
+func add_gunshot(delay: float, grid_number: int, cell: Vector2i) -> void:
 	var gunned_grid: Grid = get_grid(grid_number)
 	var gunshot: Gunshot = GUNSHOT_SCENE.instantiate()
 	gunshot.position = (cell + Vector2i(-1, -1)) * 37
 	gunned_grid.add_child(gunshot)
-	gunshot.shoot(5.5)
+	gunshot.shoot(delay)
 	
 	

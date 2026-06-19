@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bbl1omry5bulr" path="res://assets/art/grid_sheet.png" id="2_6ejo2"]
 [ext_resource type="SpriteFrames" uid="uid://bnxtarawh1lx7" path="res://resources/number_frames.tres" id="3_csyyb"]
 [ext_resource type="PackedScene" uid="uid://cigqx6eyt650v" path="res://scenes/game_scene/player/player.tscn" id="3_deqi6"]
-[ext_resource type="PackedScene" uid="uid://vsu14xfhjtqs" path="res://scenes/game_scene/events/gunshot.tscn" id="5_deqi6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6c60u"]
 bg_color = Color(1, 1, 1, 0)
@@ -52,8 +51,6 @@ animations = [{
 
 [node name="Grid" type="Node2D" unique_id=589788656]
 script = ExtResource("1_6ejo2")
-
-[node name="Gunshot" parent="." unique_id=1904852629 instance=ExtResource("5_deqi6")]
 
 [node name="GunProgressBars" type="Node2D" parent="." unique_id=814323507]
 

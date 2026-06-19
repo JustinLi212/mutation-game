@@ -1,8 +1,14 @@
 [gd_resource type="AudioStreamSynchronized" format=3 uid="uid://bsiimap67gs0v"]
 
 [ext_resource type="AudioStream" uid="uid://3cquer8e423q" path="res://assets/music/game_bg.ogg" id="1_x3pl0"]
+[ext_resource type="AudioStream" uid="uid://cfi0ivu3fxv66" path="res://assets/music/red1.ogg" id="2_ynl7k"]
+[ext_resource type="AudioStream" uid="uid://dpbx6ub670qgx" path="res://assets/music/red2.ogg" id="3_rdfir"]
 
 [resource]
-stream_count = 1
+stream_count = 3
 stream_0/stream = ExtResource("1_x3pl0")
 stream_0/volume = 0.0
+stream_1/stream = ExtResource("2_ynl7k")
+stream_1/volume = 0.0
+stream_2/stream = ExtResource("3_rdfir")
+stream_2/volume = -60.0

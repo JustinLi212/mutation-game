@@ -1,12 +1,9 @@
 class_name Gunshot
 extends Area2D
 
-@export var gun_noises: Array[AudioStreamWAV]
-
 const FADE_IN_TIME = 0.1
 const FADE_OUT_TIME = 0.1
 
-@onready var sfx_player: AudioStreamPlayer = $SFXPlayer
 @onready var grid: Grid = $".."
 @onready var sprite: AnimatedSprite2D = $GunSprite
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -38,12 +35,10 @@ func shoot(time: float) -> void:
 	await timer.timeout
 	
 	# Gun impact, enable collision
+	EventBus.gun_fired.emit()
 	sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	collision_shape_2d.set_deferred("disabled", false)
 	sprite.animation = &"impact"
-	
-	sfx_player.stream = gun_noises.pick_random()
-	sfx_player.play()
 	
 	await get_tree().create_timer(0.25, false).timeout
 	
@@ -54,14 +49,13 @@ func shoot(time: float) -> void:
 	grid.gun_ended.emit()
 	
 	await tween.finished
-	await sfx_player.finished
 	queue_free()
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is not Player:
 		return
-	print("Player %d hit!" % body.get_node("../..").grid_number)
+	#print("Player %d hit!" % body.get_node("../..").grid_number)
 
 
 #func _on_paused() -> void:
