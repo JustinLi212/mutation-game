@@ -1,16 +1,16 @@
+class_name Gunshot
 extends Area2D
 
+@export var gun_noises: Array[AudioStreamWAV]
 
 const FADE_IN_TIME = 0.1
 const FADE_OUT_TIME = 0.1
-var charge_duration = 2.0
 
-
+@onready var sfx_player: AudioStreamPlayer = $SFXPlayer
+@onready var grid: Grid = $".."
 @onready var sprite: AnimatedSprite2D = $GunSprite
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var gun_progress_bar: ProgressBar = $GunProgressBar
 @onready var timer: Timer = $Timer
-#@onready var time_left: RichTextLabel = $TextureProgressBar/TimeLeft
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,46 +19,49 @@ func _ready() -> void:
 	#EventBus.pause_opened.connect(_on_paused)
 	collision_shape_2d.set_deferred("disabled", true)
 	sprite.modulate.a = 0.0
-	gun_progress_bar.modulate.a = 0.0
-	timer.wait_time = charge_duration
 
 
-#func _process(_delta: float) -> void:
-	#time_left.text = "%.2f" % timer.time_left
+func _process(_delta: float) -> void:
+	grid.gun_timer_changed.emit(timer.time_left, timer.wait_time)
 
 
 func shoot(time: float) -> void:
 	timer.wait_time = time
-	# Gun crosshair tween in
-	var tween := create_tween().set_parallel()
-	tween.tween_property(sprite, "modulate:a", 0.3, FADE_IN_TIME)
-	tween.tween_property(gun_progress_bar, "modulate:a", 1.0, FADE_IN_TIME)
-	tween.tween_property(gun_progress_bar, "value", 100.0, timer.wait_time)
+	grid.gun_started.emit()
+	# Show the gun crosshair
+	sprite.modulate = Color(1.0, 0.0, 0.0, 0.0)
+	var tween := create_tween()
+	tween.tween_property(sprite, "modulate:a", 1.0, FADE_IN_TIME)
 	
 	# Start timer
 	timer.start()
 	await timer.timeout
 	
-	# Show the laser shooting, enable collision
-	tween = create_tween()
-	tween.tween_property(sprite, "modulate:a", 1.0, .25)
+	# Gun impact, enable collision
+	sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	collision_shape_2d.set_deferred("disabled", false)
-	sprite.animation = &"shoot"
+	sprite.animation = &"impact"
+	
+	sfx_player.stream = gun_noises.pick_random()
+	sfx_player.play()
+	
 	await get_tree().create_timer(0.25, false).timeout
 	
 	# Disable collision, fade out
 	collision_shape_2d.set_deferred("disabled", true)
 	tween = create_tween().set_parallel()
 	tween.tween_property(sprite, "modulate:a", 0.0, FADE_OUT_TIME)
-	tween.tween_property(gun_progress_bar, "modulate:a", 0.0, FADE_OUT_TIME)
+	grid.gun_ended.emit()
+	
 	await tween.finished
+	await sfx_player.finished
 	queue_free()
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is not Player:
 		return
-	print("Player %d hit!" % body.get_parent().grid_number)
+	print("Player %d hit!" % body.get_node("../..").grid_number)
 
 
 #func _on_paused() -> void:

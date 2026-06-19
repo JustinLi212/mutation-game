@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://vsu14xfhjtqs"]
+
+[ext_resource type="Script" uid="uid://baedlxxrk7fes" path="res://scenes/game_scene/events/gunshot.gd" id="1_jkvqg"]
+[ext_resource type="Texture2D" uid="uid://dj47aaeld880" path="res://assets/art/gun_sheet.png" id="1_qremt"]
+[ext_resource type="AudioStream" uid="uid://cokpnpapsqea7" path="res://assets/sfx/pew/pew1.wav" id="2_i01mv"]
+[ext_resource type="AudioStream" uid="uid://de7k2bmwgvx1d" path="res://assets/sfx/pew/pew2.wav" id="3_imewu"]
+[ext_resource type="AudioStream" uid="uid://cjwcfe0lujpto" path="res://assets/sfx/pew/pew3.wav" id="4_6ts58"]
+[ext_resource type="AudioStream" uid="uid://cx7l5l7tb0426" path="res://assets/sfx/pew/pew4.wav" id="5_qa6ah"]
+[ext_resource type="AudioStream" uid="uid://m4phph7r2cnn" path="res://assets/sfx/pew/pew5.wav" id="6_md3m3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7ufq"]
+atlas = ExtResource("1_qremt")
+region = Rect2(0, 0, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkvqg"]
+atlas = ExtResource("1_qremt")
+region = Rect2(35, 0, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wak4c"]
+atlas = ExtResource("1_qremt")
+region = Rect2(70, 0, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmrvt"]
+atlas = ExtResource("1_qremt")
+region = Rect2(105, 0, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jaor"]
+atlas = ExtResource("1_qremt")
+region = Rect2(140, 0, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tibk6"]
+atlas = ExtResource("1_qremt")
+region = Rect2(175, 0, 35, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_65br1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7ufq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkvqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wak4c")
+}],
+"loop": 1,
+"name": &"crosshair",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmrvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jaor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tibk6")
+}],
+"loop": 1,
+"name": &"impact",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2h45r"]
+size = Vector2(6, 6)
+
+[node name="Gunshot" type="Area2D" unique_id=1904852629]
+script = ExtResource("1_jkvqg")
+gun_noises = Array[AudioStreamWAV]([ExtResource("2_i01mv"), ExtResource("3_imewu"), ExtResource("4_6ts58"), ExtResource("5_qa6ah"), ExtResource("6_md3m3")])
+
+[node name="GunSprite" type="AnimatedSprite2D" parent="." unique_id=535714177]
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_65br1")
+animation = &"crosshair"
+autoplay = "crosshair"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1108077614]
+shape = SubResource("RectangleShape2D_2h45r")
+
+[node name="Timer" type="Timer" parent="." unique_id=217466446]
+wait_time = 2.0
+one_shot = true
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=1234094241]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

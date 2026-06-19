@@ -1,9 +1,10 @@
+class_name GridManager
 extends Node2D
 
+const GUNSHOT_SCENE = preload("uid://vsu14xfhjtqs")
 
 var current_grids: Array[int]
 var current_players: Array[int]
-var possible_squares: Array[Vector2i]
 
 
 func _ready() -> void:
@@ -20,19 +21,13 @@ func update_grids() -> void:
 				make_grid_visible(grid)
 		else:
 			make_grid_invisible(grid)
-			grid.player.can_move = false
-			grid.player.alive = false
 	current_grids = GameManager.active_grids.duplicate()
 
 
 func update_players() -> void:
 	for grid: Grid in get_children():
-		if grid.grid_number in GameManager.active_players:
-			grid.player.can_move = true
-			grid.player.alive = true
-		else:
-			grid.player.can_move = false
-			grid.player.alive = false
+		grid.player.alive = (grid.grid_number in GameManager.active_grids)
+		grid.player.can_move = (grid.grid_number in GameManager.active_players)
 	current_players = GameManager.active_players.duplicate()
 
 
@@ -46,4 +41,20 @@ func make_grid_invisible(grid: Grid) -> void:
 	var tween := create_tween()
 	tween.tween_property(grid, "modulate:a", 0.0, 0.5)
 	grid.visible = false
+
+
+func get_grid(grid_number: int) -> Grid:
+	for grid: Grid in get_children():
+		if grid.grid_number == grid_number:
+			return grid
+	return null
+
+
+func add_gunshot(grid_number: int, cell: Vector2i) -> void:
+	var gunned_grid: Grid = get_grid(grid_number)
+	var gunshot: Gunshot = GUNSHOT_SCENE.instantiate()
+	gunshot.position = (cell + Vector2i(-1, -1)) * 37
+	gunned_grid.add_child(gunshot)
+	gunshot.shoot(5.5)
+	
 	

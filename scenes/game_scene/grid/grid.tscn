@@ -4,6 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://bbl1omry5bulr" path="res://assets/art/grid_sheet.png" id="2_6ejo2"]
 [ext_resource type="SpriteFrames" uid="uid://bnxtarawh1lx7" path="res://resources/number_frames.tres" id="3_csyyb"]
 [ext_resource type="PackedScene" uid="uid://cigqx6eyt650v" path="res://scenes/game_scene/player/player.tscn" id="3_deqi6"]
+[ext_resource type="PackedScene" uid="uid://vsu14xfhjtqs" path="res://scenes/game_scene/events/gunshot.tscn" id="5_deqi6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6c60u"]
+bg_color = Color(1, 1, 1, 0)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hq0y4"]
+bg_color = Color(1, 0.06666667, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_csyyb"]
 atlas = ExtResource("2_6ejo2")
@@ -34,45 +50,69 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Grid" type="AnimatableBody2D" unique_id=1141323151]
+[node name="Grid" type="Node2D" unique_id=589788656]
 script = ExtResource("1_6ejo2")
 
-[node name="GridSprite" type="AnimatedSprite2D" parent="." unique_id=1077239333]
+[node name="Gunshot" parent="." unique_id=1904852629 instance=ExtResource("5_deqi6")]
+
+[node name="GunProgressBars" type="Node2D" parent="." unique_id=814323507]
+
+[node name="RedProgressBar" type="ProgressBar" parent="GunProgressBars" unique_id=1529699666]
+offset_left = -59.0
+offset_top = -94.0
+offset_right = 60.0
+offset_bottom = -68.0
+theme_override_styles/background = SubResource("StyleBoxFlat_6c60u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hq0y4")
+show_percentage = false
+
+[node name="RedTimeLeft" type="RichTextLabel" parent="GunProgressBars/RedProgressBar" unique_id=1402086253]
+layout_mode = 0
+offset_right = 119.0
+offset_bottom = 25.0
+theme_override_font_sizes/normal_font_size = 24
+text = "1.00"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridBody" type="AnimatableBody2D" parent="." unique_id=1141323151]
+
+[node name="GridSprite" type="AnimatedSprite2D" parent="GridBody" unique_id=1077239333]
 sprite_frames = SubResource("SpriteFrames_2h45r")
 autoplay = "default"
-frame_progress = 0.9051903
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=709786007]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GridBody" unique_id=709786007]
 build_mode = 1
 polygon = PackedVector2Array(-56, -56, -56, 56, 56, 56, 56, -56)
 
-[node name="Player" parent="." unique_id=1433435650 instance=ExtResource("3_deqi6")]
+[node name="Player" parent="GridBody" unique_id=1433435650 instance=ExtResource("3_deqi6")]
 motion_mode = 1
 
-[node name="GridLabels" type="Node2D" parent="." unique_id=43918951]
+[node name="GridLabels" type="Node2D" parent="GridBody" unique_id=43918951]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GridLabels" unique_id=818206870]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GridBody/GridLabels" unique_id=818206870]
 position = Vector2(-73, -65)
 scale = Vector2(0.25, 0.25)
 sprite_frames = ExtResource("3_csyyb")
 animation = &"1"
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="GridLabels" unique_id=1051066276]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="GridBody/GridLabels" unique_id=1051066276]
 position = Vector2(73, -65)
 scale = Vector2(0.25, 0.25)
 sprite_frames = ExtResource("3_csyyb")
 animation = &"1"
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="GridLabels" unique_id=1287132194]
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="GridBody/GridLabels" unique_id=1287132194]
 position = Vector2(-72.99999, 64.99999)
 scale = Vector2(0.25, 0.25)
 sprite_frames = ExtResource("3_csyyb")
 animation = &"1"
 
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="GridLabels" unique_id=149984122]
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="GridBody/GridLabels" unique_id=149984122]
 position = Vector2(73, 65)
 scale = Vector2(0.25, 0.25)
 sprite_frames = ExtResource("3_csyyb")
 animation = &"1"
 
-[connection signal="frame_changed" from="GridSprite" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="frame_changed" from="GridBody/GridSprite" to="." method="_on_animated_sprite_2d_frame_changed"]

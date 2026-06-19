@@ -45,7 +45,7 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/maaa
 
 [global_group]
 
-grids="Grids that the player can move in"
+grids=""
 
 [gui]
 

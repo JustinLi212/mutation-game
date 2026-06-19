@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://6q0egmwc1vs5" path="res://scenes/game_scene/grid/grid.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://pg34afj0neua" path="res://scenes/game_scene/main.gd" id="1_sugp2"]
 [ext_resource type="Script" uid="uid://c7eltf6uef1c6" path="res://scenes/game_scene/game_ui/active_players.gd" id="2_jyhfs"]
-[ext_resource type="Script" uid="uid://1sa3u3w6h04a" path="res://scenes/game_scene/events/event_manager.gd" id="4_556hl"]
+[ext_resource type="Script" uid="uid://1sa3u3w6h04a" path="res://scenes/game_scene/events/gunshot_manager.gd" id="4_556hl"]
 [ext_resource type="Script" uid="uid://bl2qrwic8jwm" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.gd" id="4_k8he3"]
 [ext_resource type="AudioStream" uid="uid://dy3vavquw5ghj" path="res://assets/music/game_pause.ogg" id="4_wti3h"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="5_1vxbo"]
@@ -191,6 +191,7 @@ animations = [{
 }]
 
 [node name="Main" type="Node2D" unique_id=1235094678]
+texture_filter = 1
 script = ExtResource("1_sugp2")
 
 [node name="BackgroundMusicPlayer" parent="." unique_id=1446051342 instance=ExtResource("5_1vxbo")]
@@ -203,7 +204,7 @@ stream = SubResource("AudioStreamInteractive_65kuu")
 bus = &"Music"
 script = ExtResource("4_k8he3")
 
-[node name="EventManager" type="Node" parent="." unique_id=781200245]
+[node name="GunshotManager" type="Node" parent="." unique_id=781200245]
 script = ExtResource("4_556hl")
 
 [node name="BG" type="CanvasLayer" parent="." unique_id=699080488]
@@ -346,41 +347,41 @@ offset = Vector2(50, 50)
 
 [node name="Obstacles" type="Node2D" parent="." unique_id=528120845]
 
-[node name="Grids" type="Node2D" parent="." unique_id=1358162274]
+[node name="GridManager" type="Node2D" parent="." unique_id=1358162274]
 position = Vector2(640, 360)
 script = ExtResource("1_0wfyh")
 
-[node name="Grid1" parent="Grids" unique_id=1141323151 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid1" parent="GridManager" unique_id=1141323151 instance=ExtResource("1_o5qli")]
 position = Vector2(-185, 185)
 
-[node name="Grid2" parent="Grids" unique_id=634648047 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid2" parent="GridManager" unique_id=634648047 instance=ExtResource("1_o5qli")]
 position = Vector2(0, 185)
 grid_number = 2
 
-[node name="Grid3" parent="Grids" unique_id=182473328 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid3" parent="GridManager" unique_id=182473328 instance=ExtResource("1_o5qli")]
 position = Vector2(185, 185)
 grid_number = 3
 
-[node name="Grid4" parent="Grids" unique_id=1601966557 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid4" parent="GridManager" unique_id=1601966557 instance=ExtResource("1_o5qli")]
 position = Vector2(-185, 0)
 grid_number = 4
 
-[node name="Grid5" parent="Grids" unique_id=362178315 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid5" parent="GridManager" unique_id=362178315 instance=ExtResource("1_o5qli")]
 grid_number = 5
 
-[node name="Grid6" parent="Grids" unique_id=469357867 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid6" parent="GridManager" unique_id=469357867 instance=ExtResource("1_o5qli")]
 position = Vector2(185, 0)
 grid_number = 6
 
-[node name="Grid7" parent="Grids" unique_id=773556157 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid7" parent="GridManager" unique_id=773556157 instance=ExtResource("1_o5qli")]
 position = Vector2(-185, -185)
 grid_number = 7
 
-[node name="Grid8" parent="Grids" unique_id=575894669 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid8" parent="GridManager" unique_id=575894669 instance=ExtResource("1_o5qli")]
 position = Vector2(0, -185)
 grid_number = 8
 
-[node name="Grid9" parent="Grids" unique_id=18646918 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid9" parent="GridManager" unique_id=18646918 instance=ExtResource("1_o5qli")]
 position = Vector2(185, -185)
 grid_number = 9
 
