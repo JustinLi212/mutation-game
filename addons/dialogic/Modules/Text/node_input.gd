@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_pressed(ProjectSettings.get_setting('dialogic/text/input_action', 'dialogic_default_action')):
+	if Input.is_action_pressed(ProjectSettings.get_setting('dialogic/text/input_action', 'advance_dialogue')):
 		mouse_filter = Control.MOUSE_FILTER_STOP
 	else:
 		mouse_filter = Control.MOUSE_FILTER_IGNORE

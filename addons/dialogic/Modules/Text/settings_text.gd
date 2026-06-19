@@ -65,7 +65,7 @@ func _refresh() -> void:
 	%DefaultSpeed.value = ProjectSettings.get_setting(_SETTING_LETTER_SPEED, 0.01)
 
 	%InputAction.resource_icon = get_theme_icon(&"Mouse", &"EditorIcons")
-	%InputAction.set_value(ProjectSettings.get_setting(_SETTING_INPUT_ACTION, &'dialogic_default_action'))
+	%InputAction.set_value(ProjectSettings.get_setting(_SETTING_INPUT_ACTION, &'advance_dialogue'))
 	%InputAction.suggestions_func = suggest_actions
 
 	%Skippable.button_pressed = ProjectSettings.get_setting(_SETTING_TEXT_REVEAL_SKIPPABLE, true)

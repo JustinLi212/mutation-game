@@ -15,6 +15,8 @@ var charge_duration = 2.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	EventBus.pause_closed.connect(_on_unpaused)
+	EventBus.pause_opened.connect(_on_paused)
 	collision_shape_2d.set_deferred("disabled", true)
 	sprite.modulate.a = 0.0
 	texture_progress_bar.modulate.a = 0.0
@@ -25,7 +27,8 @@ func _process(_delta: float) -> void:
 	time_left.text = "%.2f" % timer.time_left
 
 
-func shoot() -> void:
+func shoot(time: float) -> void:
+	timer.wait_time = time
 	# Show the laser charge
 	var tween := create_tween().set_parallel()
 	tween.tween_property(sprite, "modulate:a", 0.3, FADE_IN_TIME)
@@ -56,3 +59,13 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is not Player:
 		return
 	print("Player %d hit!" % body.get_parent().grid_number)
+
+
+func _on_paused() -> void:
+	texture_progress_bar.texture_under.speed_scale = 0.0
+	texture_progress_bar.texture_progress.speed_scale = 0.0
+
+
+func _on_unpaused() -> void:
+	texture_progress_bar.texture_under.speed_scale = 1.0
+	texture_progress_bar.texture_progress.speed_scale = 1.0

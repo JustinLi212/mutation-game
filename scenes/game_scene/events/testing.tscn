@@ -1,48 +1,36 @@
-[gd_scene format=3 uid="uid://cokeq10e2nnpt"]
+[gd_scene format=3 uid="uid://ctcyg6f8v25in"]
 
-[ext_resource type="Script" uid="uid://lrmwjyn2v6h1" path="res://scenes/game_scene/grid/grid_manager.gd" id="1_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://6q0egmwc1vs5" path="res://scenes/game_scene/grid/grid.tscn" id="1_o5qli"]
-[ext_resource type="Script" uid="uid://pg34afj0neua" path="res://scenes/game_scene/main.gd" id="1_sugp2"]
-[ext_resource type="Script" uid="uid://c7eltf6uef1c6" path="res://scenes/game_scene/game_ui/active_players.gd" id="2_jyhfs"]
-[ext_resource type="Script" uid="uid://1sa3u3w6h04a" path="res://scenes/game_scene/events/event_manager.gd" id="4_556hl"]
-[ext_resource type="Script" uid="uid://bl2qrwic8jwm" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.gd" id="4_k8he3"]
-[ext_resource type="AudioStream" uid="uid://dy3vavquw5ghj" path="res://assets/music/game_pause.ogg" id="4_wti3h"]
-[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="5_1vxbo"]
-[ext_resource type="AudioStream" uid="uid://bsiimap67gs0v" path="res://resources/music/game_audio_stream.tres" id="5_bt4sa"]
-[ext_resource type="AudioStream" uid="uid://mtfgrckwbujr" path="res://assets/music/pause_transition.ogg" id="5_xceeg"]
-[ext_resource type="Texture2D" uid="uid://pam248j4srtg" path="res://assets/art/active_players.png" id="8_65kuu"]
-[ext_resource type="SpriteFrames" uid="uid://bnxtarawh1lx7" path="res://resources/number_frames.tres" id="9_xceeg"]
-[ext_resource type="Texture2D" uid="uid://cw57y634rulc7" path="res://assets/art/walls_sheet.png" id="10_q28bu"]
+[ext_resource type="Script" uid="uid://pg34afj0neua" path="res://scenes/game_scene/main.gd" id="1_rj5gg"]
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="2_liemg"]
+[ext_resource type="AudioStream" uid="uid://bsiimap67gs0v" path="res://resources/music/game_audio_stream.tres" id="3_4mn7c"]
+[ext_resource type="AudioStream" uid="uid://dy3vavquw5ghj" path="res://assets/music/game_pause.ogg" id="4_tr73d"]
+[ext_resource type="AudioStream" uid="uid://mtfgrckwbujr" path="res://assets/music/pause_transition.ogg" id="5_3hdxv"]
+[ext_resource type="Script" uid="uid://bl2qrwic8jwm" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.gd" id="6_kfiir"]
+[ext_resource type="Script" uid="uid://1sa3u3w6h04a" path="res://scenes/game_scene/events/event_manager.gd" id="7_fuxa0"]
+[ext_resource type="Texture2D" uid="uid://pam248j4srtg" path="res://assets/art/active_players.png" id="8_dst20"]
+[ext_resource type="Script" uid="uid://c7eltf6uef1c6" path="res://scenes/game_scene/game_ui/active_players.gd" id="9_jajyt"]
+[ext_resource type="SpriteFrames" uid="uid://bnxtarawh1lx7" path="res://resources/number_frames.tres" id="10_ves02"]
+[ext_resource type="Script" uid="uid://lrmwjyn2v6h1" path="res://scenes/game_scene/grid/grid_manager.gd" id="11_i2q2v"]
+[ext_resource type="PackedScene" uid="uid://6q0egmwc1vs5" path="res://scenes/game_scene/grid/grid.tscn" id="12_1s0ll"]
+[ext_resource type="PackedScene" uid="uid://b84qi58m470pt" path="res://scenes/game_scene/events/laser.tscn" id="13_dcdjs"]
+[ext_resource type="Texture2D" uid="uid://cw57y634rulc7" path="res://assets/art/walls_sheet.png" id="14_n1fcw"]
 
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_65kuu"]
-clip_count = 2
-clip_0/name = &"Pause Transition"
-clip_0/stream = ExtResource("5_xceeg")
-clip_0/auto_advance = 1
-clip_0/next_clip = 1
-clip_1/name = &"Game Pause"
-clip_1/stream = ExtResource("4_wti3h")
-clip_1/auto_advance = 1
-clip_1/next_clip = 1
-_transitions = {
-Vector2i(0, 1): {
-"fade_beats": 0.5,
-"fade_mode": 2,
-"from_time": 0,
-"to_time": 0
-}
-}
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_2h45r"]
+fade_time = 0.0
+stream_count = 2
+stream_0 = ExtResource("5_3hdxv")
+stream_1 = ExtResource("4_tr73d")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_whber"]
-atlas = ExtResource("8_65kuu")
+atlas = ExtResource("8_dst20")
 region = Rect2(0, 0, 177, 79)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3u2c"]
-atlas = ExtResource("8_65kuu")
+atlas = ExtResource("8_dst20")
 region = Rect2(177, 0, 177, 79)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ailo"]
-atlas = ExtResource("8_65kuu")
+atlas = ExtResource("8_dst20")
 region = Rect2(354, 0, 177, 79)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tsmfw"]
@@ -63,27 +51,27 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_brcv1"]
-atlas = ExtResource("10_q28bu")
+atlas = ExtResource("14_n1fcw")
 region = Rect2(0, 0, 32, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wti3h"]
-atlas = ExtResource("10_q28bu")
+atlas = ExtResource("14_n1fcw")
 region = Rect2(32, 0, 32, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xceeg"]
-atlas = ExtResource("10_q28bu")
+atlas = ExtResource("14_n1fcw")
 region = Rect2(64, 0, 32, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65kuu"]
-atlas = ExtResource("10_q28bu")
+atlas = ExtResource("14_n1fcw")
 region = Rect2(96, 0, 32, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5kgwa"]
-atlas = ExtResource("10_q28bu")
+atlas = ExtResource("14_n1fcw")
 region = Rect2(128, 0, 32, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cdw3p"]
-atlas = ExtResource("10_q28bu")
+atlas = ExtResource("14_n1fcw")
 region = Rect2(160, 0, 32, 720)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2h45r"]
@@ -190,21 +178,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Main" type="Node2D" unique_id=1235094678]
-script = ExtResource("1_sugp2")
+[node name="Testing" type="Node2D" unique_id=1235094678]
+script = ExtResource("1_rj5gg")
 
-[node name="BackgroundMusicPlayer" parent="." unique_id=1446051342 instance=ExtResource("5_1vxbo")]
-stream = ExtResource("5_bt4sa")
-script = ExtResource("4_k8he3")
+[node name="BackgroundMusicPlayer" parent="." unique_id=1446051342 instance=ExtResource("2_liemg")]
+stream = ExtResource("3_4mn7c")
+script = ExtResource("6_kfiir")
 
-[node name="PausePlayer" type="AudioStreamPlayer" parent="." unique_id=158153352]
-process_mode = 3
-stream = SubResource("AudioStreamInteractive_65kuu")
-bus = &"Music"
-script = ExtResource("4_k8he3")
+[node name="PausePlayer" type="AudioStreamPlayer" parent="." unique_id=1287082142]
+stream = SubResource("AudioStreamPlaylist_2h45r")
 
 [node name="EventManager" type="Node" parent="." unique_id=781200245]
-script = ExtResource("4_556hl")
+script = ExtResource("7_fuxa0")
+
+[node name="LaserSpanwer" type="Node2D" parent="." unique_id=1233425262]
 
 [node name="BG" type="CanvasLayer" parent="." unique_id=699080488]
 layer = -1
@@ -234,7 +221,7 @@ offset_right = -41.0
 offset_bottom = 476.5
 grow_horizontal = 0
 columns = 3
-script = ExtResource("2_jyhfs")
+script = ExtResource("9_jajyt")
 
 [node name="7" type="TextureRect" parent="UI/ActivePlayers" unique_id=423752313]
 custom_minimum_size = Vector2(60, 60)
@@ -243,7 +230,7 @@ layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/7" unique_id=1304355183]
 scale = Vector2(0.6, 0.6)
-sprite_frames = ExtResource("9_xceeg")
+sprite_frames = ExtResource("10_ves02")
 animation = &"7"
 autoplay = "7"
 offset = Vector2(50, 50)
@@ -255,7 +242,7 @@ layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/8" unique_id=312571242]
 scale = Vector2(0.6, 0.6)
-sprite_frames = ExtResource("9_xceeg")
+sprite_frames = ExtResource("10_ves02")
 animation = &"8"
 autoplay = "8"
 offset = Vector2(50, 50)
@@ -267,7 +254,7 @@ layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/9" unique_id=846258812]
 scale = Vector2(0.6, 0.6)
-sprite_frames = ExtResource("9_xceeg")
+sprite_frames = ExtResource("10_ves02")
 animation = &"9"
 autoplay = "9"
 offset = Vector2(50, 50)
@@ -279,7 +266,7 @@ layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/4" unique_id=2088222111]
 scale = Vector2(0.6, 0.6)
-sprite_frames = ExtResource("9_xceeg")
+sprite_frames = ExtResource("10_ves02")
 animation = &"4"
 autoplay = "4"
 offset = Vector2(50, 50)
@@ -291,7 +278,7 @@ layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/5" unique_id=812307137]
 scale = Vector2(0.6, 0.6)
-sprite_frames = ExtResource("9_xceeg")
+sprite_frames = ExtResource("10_ves02")
 animation = &"5"
 autoplay = "5"
 offset = Vector2(50, 50)
@@ -303,7 +290,7 @@ layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/6" unique_id=1798732563]
 scale = Vector2(0.6, 0.6)
-sprite_frames = ExtResource("9_xceeg")
+sprite_frames = ExtResource("10_ves02")
 animation = &"6"
 autoplay = "6"
 offset = Vector2(50, 50)
@@ -315,7 +302,7 @@ layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/1" unique_id=628873492]
 scale = Vector2(0.6, 0.6)
-sprite_frames = ExtResource("9_xceeg")
+sprite_frames = ExtResource("10_ves02")
 animation = &"1"
 autoplay = "1"
 offset = Vector2(50, 50)
@@ -327,7 +314,7 @@ layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/2" unique_id=257262194]
 scale = Vector2(0.6, 0.6)
-sprite_frames = ExtResource("9_xceeg")
+sprite_frames = ExtResource("10_ves02")
 animation = &"2"
 autoplay = "2"
 offset = Vector2(50, 50)
@@ -339,7 +326,7 @@ layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/3" unique_id=2097854618]
 scale = Vector2(0.6, 0.6)
-sprite_frames = ExtResource("9_xceeg")
+sprite_frames = ExtResource("10_ves02")
 animation = &"3"
 autoplay = "3"
 offset = Vector2(50, 50)
@@ -348,41 +335,44 @@ offset = Vector2(50, 50)
 
 [node name="Grids" type="Node2D" parent="." unique_id=1358162274]
 position = Vector2(640, 360)
-script = ExtResource("1_0wfyh")
+script = ExtResource("11_i2q2v")
 
-[node name="Grid1" parent="Grids" unique_id=1141323151 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid1" parent="Grids" unique_id=1141323151 instance=ExtResource("12_1s0ll")]
 position = Vector2(-185, 185)
 
-[node name="Grid2" parent="Grids" unique_id=634648047 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid2" parent="Grids" unique_id=634648047 instance=ExtResource("12_1s0ll")]
 position = Vector2(0, 185)
 grid_number = 2
 
-[node name="Grid3" parent="Grids" unique_id=182473328 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid3" parent="Grids" unique_id=182473328 instance=ExtResource("12_1s0ll")]
 position = Vector2(185, 185)
 grid_number = 3
 
-[node name="Grid4" parent="Grids" unique_id=1601966557 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid4" parent="Grids" unique_id=1601966557 instance=ExtResource("12_1s0ll")]
 position = Vector2(-185, 0)
 grid_number = 4
 
-[node name="Grid5" parent="Grids" unique_id=362178315 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid5" parent="Grids" unique_id=362178315 instance=ExtResource("12_1s0ll")]
 grid_number = 5
 
-[node name="Grid6" parent="Grids" unique_id=469357867 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid6" parent="Grids" unique_id=469357867 instance=ExtResource("12_1s0ll")]
 position = Vector2(185, 0)
 grid_number = 6
 
-[node name="Grid7" parent="Grids" unique_id=773556157 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid7" parent="Grids" unique_id=773556157 instance=ExtResource("12_1s0ll")]
 position = Vector2(-185, -185)
 grid_number = 7
 
-[node name="Grid8" parent="Grids" unique_id=575894669 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid8" parent="Grids" unique_id=575894669 instance=ExtResource("12_1s0ll")]
 position = Vector2(0, -185)
 grid_number = 8
 
-[node name="Grid9" parent="Grids" unique_id=18646918 groups=["grids"] instance=ExtResource("1_o5qli")]
+[node name="Grid9" parent="Grids" unique_id=18646918 instance=ExtResource("12_1s0ll")]
 position = Vector2(185, -185)
 grid_number = 9
+
+[node name="Laser" parent="." unique_id=2100784112 instance=ExtResource("13_dcdjs")]
+position = Vector2(640, 360)
 
 [node name="Walls" type="Node2D" parent="." unique_id=1860315342]
 

@@ -17,7 +17,7 @@ signal dialogic_action
 signal autoskip_timer_finished
 
 const _SETTING_INPUT_ACTION := "dialogic/text/input_action"
-const _SETTING_INPUT_ACTION_DEFAULT := "dialogic_default_action"
+const _SETTING_INPUT_ACTION_DEFAULT := "advance_dialogue"
 
 ## When this timer is running, input is blocked. Use ith with [method block_input].
 var input_block_timer := Timer.new()

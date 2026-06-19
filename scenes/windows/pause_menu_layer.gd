@@ -4,10 +4,12 @@ extends CanvasLayer
 
 func _on_pause_menu_hidden():
 	hide()
+	EventBus.pause_closed.emit()
 
 func _on_visibility_changed():
 	if visible:
 		pause_menu.show()
+		EventBus.pause_opened.emit()
 
 func _ready():
 	visibility_changed.connect(_on_visibility_changed)

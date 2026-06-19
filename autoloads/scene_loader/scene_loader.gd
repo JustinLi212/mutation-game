@@ -89,6 +89,8 @@ func _check_loading_screen() -> bool:
 	return true
 
 func reload_current_scene() -> void:
+	if get_tree().current_scene.scene_file_path == "res://scenes/game_scene/game_ui.tscn":
+		GameManager.reset_state()
 	get_tree().reload_current_scene()
 
 func load_scene(scene_path : String, in_background : bool = false) -> void:

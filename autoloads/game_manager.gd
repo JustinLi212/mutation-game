@@ -77,3 +77,10 @@ func remove_player(grid_number: int) -> void:
 
 func _check_number(n: int) -> bool:
 	return 0 < n and n < 10
+
+
+func reset_state() -> void:
+	active_grids = []
+	active_players = []
+	active_grids_changed.emit()
+	active_players_changed.emit()

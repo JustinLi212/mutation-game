@@ -22,7 +22,7 @@ func _ready() -> void:
 	base_pos = global_position
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	grid_labels.modulate.a = grid_sprite.modulate.a
 
 

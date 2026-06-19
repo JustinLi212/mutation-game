@@ -24,7 +24,7 @@ func _init() -> void:
 
 ## Activation & Editor Setup
 func _enable_plugin() -> void:
-	add_dialogic_default_action()
+	add_advance_dialogue()
 
 
 func _disable_plugin() -> void:
@@ -126,9 +126,9 @@ func _editor_view_and_manager_exist() -> bool:
 ################################################################################
 
 ## Special Setup/Updates
-## Methods that adds a dialogic_default_action if non exists
-func add_dialogic_default_action() -> void:
-	if ProjectSettings.has_setting("input/dialogic_default_action"):
+## Methods that adds a advance_dialogue if non exists
+func add_advance_dialogue() -> void:
+	if ProjectSettings.has_setting("input/advance_dialogue"):
 		return
 
 	var input_enter: InputEventKey = InputEventKey.new()
@@ -144,7 +144,7 @@ func add_dialogic_default_action() -> void:
 	var input_controller: InputEventJoypadButton = InputEventJoypadButton.new()
 	input_controller.button_index = JOY_BUTTON_A
 
-	ProjectSettings.set_setting("input/dialogic_default_action", {"deadzone":0.5, "events":[input_enter, input_left_click, input_space, input_x, input_controller]})
+	ProjectSettings.set_setting("input/advance_dialogue", {"deadzone":0.5, "events":[input_enter, input_left_click, input_space, input_x, input_controller]})
 	ProjectSettings.save()
 
 # Create cache when project is compiled
