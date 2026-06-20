@@ -65,10 +65,14 @@ func shoot(time: float) -> void:
 	collision_shape_2d.set_deferred("disabled", false)
 	sprite.animation = &"impact"
 	
+	# Disable collision after two frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	collision_shape_2d.set_deferred("disabled", true)
+	
 	await get_tree().create_timer(0.25, false).timeout
 	
-	# Disable collision, fade out
-	collision_shape_2d.set_deferred("disabled", true)
+	# Fade out
 	tween = create_tween().set_parallel()
 	tween.tween_property(sprite, "modulate:a", 0.0, FADE_OUT_TIME)
 	grid.gun_ended.emit(gunshot_info)
@@ -86,6 +90,7 @@ func shoot(time: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is not Player:
 		return
+	GameManager.remove_grid(body.get_node("../..").grid_number)
 	#print("Player %d hit!" % body.get_node("../..").grid_number)
 
 

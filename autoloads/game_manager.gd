@@ -6,6 +6,13 @@ signal active_players_changed
 var active_grids: Array[int] = []
 var active_players: Array[int] = []
 
+var high_score: int = 0
+var cycles_survived: int = 0
+
+
+func _ready() -> void:
+	EventBus.music_looped.connect(_on_music_looped)
+
 
 func _process(_delta: float) -> void:
 	for num in range(1, 10):
@@ -73,6 +80,8 @@ func remove_grid(grid_number: int) -> void:
 		return
 	active_grids.remove_at(grid_index)
 	active_grids_changed.emit()
+	if active_grids == []:
+		WinLoseManager.game_won()
 
 
 func remove_player(grid_number: int) -> void:
@@ -88,9 +97,13 @@ func remove_player(grid_number: int) -> void:
 func _check_number(n: int) -> bool:
 	return 0 < n and n < 10
 
+func _on_music_looped() -> void:
+	cycles_survived += 1
+	high_score = max(cycles_survived, high_score)
 
 func reset_state() -> void:
 	active_grids = []
 	active_players = []
+	cycles_survived = 0
 	active_grids_changed.emit()
 	active_players_changed.emit()

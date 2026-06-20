@@ -24,6 +24,7 @@ ProjectMusicController="*uid://r5t485lr3p7t"
 ProjectUISoundController="*uid://cc37235kj4384"
 Dialogic="*uid://ds2q0uclmolvu"
 GameManager="*uid://dydiws25tny73"
+WinLoseManager="*uid://bmlwpkrav3q56"
 
 [dialogic]
 

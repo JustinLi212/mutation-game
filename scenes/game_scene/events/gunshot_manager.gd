@@ -29,7 +29,7 @@ func _ready() -> void:
 
 
 func red_attack() -> void:
-	for grid_number in range(1, 10):
+	for grid_number in GameManager.active_grids.duplicate():
 		var chosen_cells = get_random_cells(grid_number, 4)
 		grid_manager.get_grid(grid_number).chosen_cells[Gunshot.GunColor.RED] = chosen_cells
 		for cell: Vector2i in chosen_cells:
@@ -67,7 +67,7 @@ func pick_random_attack() -> void:
 
 
 func get_random_grids(count: int) -> Array:
-	var grids: Array = range(1, 10)
+	var grids: Array = GameManager.active_grids.duplicate()
 	grids.shuffle()
 	return grids.slice(0, count)
 
