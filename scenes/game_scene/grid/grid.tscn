@@ -18,7 +18,7 @@ expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hq0y4"]
-bg_color = Color(1, 0.06666667, 0, 1)
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_csyyb"]
 atlas = ExtResource("2_6ejo2")
@@ -54,19 +54,23 @@ script = ExtResource("1_6ejo2")
 
 [node name="GunProgressBars" type="Node2D" parent="." unique_id=814323507]
 
-[node name="RedProgressBar" type="ProgressBar" parent="GunProgressBars" unique_id=1529699666]
+[node name="ProgressBar1" type="ProgressBar" parent="GunProgressBars" unique_id=1529699666]
 offset_left = -59.0
 offset_top = -94.0
 offset_right = 60.0
 offset_bottom = -68.0
 theme_override_styles/background = SubResource("StyleBoxFlat_6c60u")
 theme_override_styles/fill = SubResource("StyleBoxFlat_hq0y4")
+value = 100.0
 show_percentage = false
 
-[node name="RedTimeLeft" type="RichTextLabel" parent="GunProgressBars/RedProgressBar" unique_id=1402086253]
-layout_mode = 0
-offset_right = 119.0
-offset_bottom = 25.0
+[node name="TimeLeftLabel1" type="RichTextLabel" parent="GunProgressBars" unique_id=1402086253]
+offset_left = -59.0
+offset_top = -94.0
+offset_right = 60.0
+offset_bottom = -69.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 24
 text = "1.00"
 scroll_active = false

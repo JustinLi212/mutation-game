@@ -4,6 +4,28 @@ extends Area2D
 const FADE_IN_TIME = 0.1
 const FADE_OUT_TIME = 0.1
 
+enum GunColor {
+	WHITE,			## Starter. Spawns one gunshot per grid.
+	RED,			## Triple threat. Gets the full 8 seconds.
+	ORANGE,			## Six shooter. Only spawns in four grids.
+	YELLOW,			
+	GREEN,
+	BLUE,
+	PURPLE,
+}
+
+static var colors: Dictionary[GunColor, Color] = {
+	GunColor.WHITE: Color(1.0, 1.0, 1.0, 1.0),
+	GunColor.RED: Color(1.0, 0.0, 0.0, 1.0),
+	GunColor.ORANGE: Color(1.0, 0.501, 0.12, 1.0),
+	GunColor.YELLOW: Color(1.0, 1.0, 0.0, 1.0),
+	GunColor.GREEN: Color(0.0, 0.764, 0.0, 1.0),
+	GunColor.BLUE: Color(0.218, 0.439, 1.0, 1.0),
+	GunColor.PURPLE: Color(0.781, 0.502, 1.0, 1.0),
+}
+
+var gun_color := GunColor.RED
+
 @onready var grid: Grid = $".."
 @onready var sprite: AnimatedSprite2D = $GunSprite
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -15,6 +37,7 @@ func _ready() -> void:
 	#EventBus.pause_closed.connect(_on_unpaused)
 	#EventBus.pause_opened.connect(_on_paused)
 	collision_shape_2d.set_deferred("disabled", true)
+	sprite.modulate = colors[gun_color]
 	sprite.modulate.a = 0.0
 
 
@@ -24,11 +47,13 @@ func _process(_delta: float) -> void:
 
 func shoot(time: float) -> void:
 	timer.wait_time = time
-	grid.gun_started.emit()
+	grid.gun_started.emit(gun_color)
 	# Show the gun crosshair
-	sprite.modulate = Color(1.0, 0.0, 0.0, 0.0)
 	var tween := create_tween()
 	tween.tween_property(sprite, "modulate:a", 1.0, FADE_IN_TIME)
+	
+	var rotate_tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	rotate_tween.tween_property(sprite, "rotation_degrees", -90.0, 0.5).as_relative()
 	
 	# Start timer
 	timer.start()

@@ -10,6 +10,7 @@ var current_players: Array[int]
 func _ready() -> void:
 	GameManager.active_grids_changed.connect(update_grids)
 	GameManager.active_players_changed.connect(update_players)
+	
 	for grid: Grid in get_children():
 		grid.visible = false
 
@@ -50,9 +51,10 @@ func get_grid(grid_number: int) -> Grid:
 	return null
 
 
-func add_gunshot(delay: float, grid_number: int, cell: Vector2i) -> void:
+func add_gunshot(color: Gunshot.GunColor, delay: float, grid_number: int, cell: Vector2i) -> void:
 	var gunned_grid: Grid = get_grid(grid_number)
 	var gunshot: Gunshot = GUNSHOT_SCENE.instantiate()
+	gunshot.gun_color = color
 	gunshot.position = (cell + Vector2i(-1, -1)) * 37
 	gunned_grid.add_child(gunshot)
 	gunshot.shoot(delay)

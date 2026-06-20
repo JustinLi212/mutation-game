@@ -354,8 +354,6 @@ animation = &"3"
 autoplay = "3"
 offset = Vector2(50, 50)
 
-[node name="Obstacles" type="Node2D" parent="." unique_id=528120845]
-
 [node name="GridManager" type="Node2D" parent="." unique_id=1358162274]
 position = Vector2(640, 360)
 script = ExtResource("1_0wfyh")
