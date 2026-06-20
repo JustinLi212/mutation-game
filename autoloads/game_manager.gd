@@ -7,10 +7,20 @@ var active_grids: Array[int] = []
 var active_players: Array[int] = []
 
 
-func _input(event: InputEvent) -> void:
-	for i in range(1, 10):
-		if event.is_action_pressed(str(i)):
-			toggle_player(i)
+func _process(_delta: float) -> void:
+	for num in range(1, 10):
+		if Input.is_action_pressed(str(num)):
+			if num not in active_players:
+				toggle_player(num)
+		elif num in active_players:
+			toggle_player(num)
+
+
+# Old toggle based input, might add as an option
+#func _input(event: InputEvent) -> void:
+	#for i in range(1, 10):
+		#if event.is_action_pressed(str(i)):
+			#toggle_player(i)
 
 
 func add_grid_and_player(number: int) -> void:

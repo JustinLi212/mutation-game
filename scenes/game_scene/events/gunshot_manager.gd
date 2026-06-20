@@ -7,6 +7,7 @@ const MAX_CHOOSE_ATTEMPTS = 50
 var gun_functions: Array[Callable] = [
 	red_attack,
 	orange_attack,
+	yellow_attack,
 ]
 
 
@@ -39,7 +40,7 @@ func red_attack() -> void:
 			if cell not in chosen_cells:
 				chosen_cells.append(cell)
 				added_cell_count += 1
-			if added_cell_count >= 3:
+			if added_cell_count >= 4:
 				break
 		for cell: Vector2i in chosen_cells:
 			grid_manager.add_gunshot(Gunshot.GunColor.RED, 7.5, grid_number, cell)
@@ -48,7 +49,7 @@ func red_attack() -> void:
 func orange_attack() -> void:
 	var grids: Array = range(1, 10)
 	grids.shuffle()
-	for grid_number in grids.slice(0, 4):	# first 3 grid numbers in shuffled grid list
+	for grid_number in grids.slice(0, 5):	# first 5 grid numbers in shuffled grid list
 		var added_cell_count: int = 0
 		var chosen_cells: Array = grid_manager.get_grid(grid_number).chosen_cells.get("orange")
 		chosen_cells = []
@@ -61,6 +62,26 @@ func orange_attack() -> void:
 				break
 		for cell: Vector2i in chosen_cells:
 			grid_manager.add_gunshot(Gunshot.GunColor.ORANGE, 7.5, grid_number, cell)
+
+
+func yellow_attack() -> void:
+	for i in 2:
+		var grids: Array = range(1, 10)
+		grids.shuffle()
+		for grid_number in grids.slice(0, 3):	# first 5 grid numbers in shuffled grid list
+			var added_cell_count: int = 0
+			var chosen_cells: Array = grid_manager.get_grid(grid_number).chosen_cells.get("yellow")
+			chosen_cells = []
+			for _attempt in MAX_CHOOSE_ATTEMPTS:
+				var cell := Vector2i(randi_range(0, 2), randi_range(0, 2))
+				if cell not in chosen_cells:
+					chosen_cells.append(cell)
+					added_cell_count += 1
+				if added_cell_count >= 4:
+					break
+			for cell: Vector2i in chosen_cells:
+				grid_manager.add_gunshot(Gunshot.GunColor.YELLOW, 3.5, grid_number, cell)
+		await get_tree().create_timer(4.0, false).timeout
 
 
 func _on_gun_fired() -> void:

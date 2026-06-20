@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Mutation Game"
+config/name="Numpad Nemesis"
 run/main_scene="res://scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.7")
 config/icon="uid://h8t34ms5hkmv"
