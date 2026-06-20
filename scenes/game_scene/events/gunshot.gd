@@ -24,7 +24,7 @@ static var colors: Dictionary[GunColor, Color] = {
 	GunColor.PURPLE: Color(0.781, 0.502, 1.0, 1.0),
 }
 
-var gun_color := GunColor.RED
+var gunshot_info: GunshotInfo
 
 @onready var grid: Grid = $".."
 @onready var sprite: AnimatedSprite2D = $GunSprite
@@ -37,7 +37,7 @@ func _ready() -> void:
 	#EventBus.pause_closed.connect(_on_unpaused)
 	#EventBus.pause_opened.connect(_on_paused)
 	collision_shape_2d.set_deferred("disabled", true)
-	sprite.modulate = colors[gun_color]
+	sprite.modulate = colors[gunshot_info.color]
 	sprite.modulate.a = 0.0
 
 
@@ -47,7 +47,7 @@ func _process(_delta: float) -> void:
 
 func shoot(time: float) -> void:
 	timer.wait_time = time
-	grid.gun_started.emit(gun_color)
+	grid.gun_started.emit(gunshot_info)
 	# Show the gun crosshair
 	var tween := create_tween()
 	tween.tween_property(sprite, "modulate:a", 1.0, FADE_IN_TIME)
@@ -71,7 +71,13 @@ func shoot(time: float) -> void:
 	collision_shape_2d.set_deferred("disabled", true)
 	tween = create_tween().set_parallel()
 	tween.tween_property(sprite, "modulate:a", 0.0, FADE_OUT_TIME)
-	grid.gun_ended.emit()
+	grid.gun_ended.emit(gunshot_info)
+	
+	# Remove this gunshot from the grid's chosen cell storage
+	var chosen: Array = grid.chosen_cells[gunshot_info.color]
+	var idx = chosen.find(gunshot_info.cell)
+	if idx != -1:
+		chosen.remove_at(idx)
 	
 	await tween.finished
 	queue_free()

@@ -1,6 +1,5 @@
 extends AudioStreamPlayer
 
-signal music_looped
 var last_position: float = 0.0
 
 var sync_stream: AudioStreamSynchronized
@@ -10,13 +9,13 @@ var sync_stream: AudioStreamSynchronized
 func _ready() -> void:
 	EventBus.pause_opened.connect(_on_game_paused)
 	EventBus.pause_closed.connect(_on_game_unpaused)
-	music_looped.connect(_on_music_looped)
+	EventBus.music_looped.connect(_on_music_looped)
 	sync_stream = stream as AudioStreamSynchronized
 
 
 func _process(delta: float) -> void:
 	if get_playback_position() < last_position:
-		music_looped.emit()
+		EventBus.music_looped.emit()
 	last_position = get_playback_position()
 
 

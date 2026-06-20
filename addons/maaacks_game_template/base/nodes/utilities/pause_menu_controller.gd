@@ -9,6 +9,8 @@ var pause_menu : Node
 
 func pause() -> void:
 	if pause_menu.visible: return
+	EventBus.pause_queued.emit()
+	await EventBus.music_looped
 	if not focused_viewport:
 		focused_viewport = get_viewport()
 	var _initial_focus_control = focused_viewport.gui_get_focus_owner()
