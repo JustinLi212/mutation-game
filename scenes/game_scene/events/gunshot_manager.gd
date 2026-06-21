@@ -51,7 +51,7 @@ func orange_attack() -> void:
 func yellow_attack() -> void:
 	for _attack in 4:
 		for grid_number in get_random_grids(1):
-			var chosen_cells: Array = get_random_cells(grid_number, 8)
+			var chosen_cells: Array = get_random_cells(grid_number, 7)
 			grid_manager.get_grid(grid_number).chosen_cells[Gunshot.GunColor.YELLOW] = chosen_cells
 			for cell: Vector2i in chosen_cells:
 				grid_manager.add_gunshot(

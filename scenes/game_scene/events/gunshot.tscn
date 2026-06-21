@@ -91,7 +91,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2h45r"]
-size = Vector2(6, 6)
+size = Vector2(16, 16)
 
 [node name="Gunshot" type="Area2D" unique_id=1904852629]
 script = ExtResource("1_jkvqg")
@@ -99,7 +99,7 @@ script = ExtResource("1_jkvqg")
 [node name="GunSprite" type="AnimatedSprite2D" parent="." unique_id=535714177]
 z_index = 10
 sprite_frames = SubResource("SpriteFrames_65br1")
-animation = &"heart"
+animation = &"crosshair"
 autoplay = "crosshair"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1108077614]

@@ -78,5 +78,5 @@ func _on_gun_ended(_gunshot_info: GunshotInfo) -> void:
 
 
 func _on_gun_timer_changed(time_left: float, wait_time: float) -> void:
-	time_left_label.text = "%.1f" % time_left
+	time_left_label.text = "%.1f" % (time_left / Engine.time_scale)
 	gun_progress_bar.value = (wait_time - time_left) / wait_time * 100.0

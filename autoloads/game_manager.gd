@@ -105,6 +105,10 @@ func _check_number(n: int) -> bool:
 func _on_music_looped() -> void:
 	cycles_survived += 1
 	high_score = max(cycles_survived, high_score)
+	# Randomize last active grid
+	if active_grids.size() == 1:
+		active_grids = [randi_range(1, 9)]
+		active_grids_changed.emit()
 
 func reset_state() -> void:
 	active_grids = []
