@@ -1,0 +1,14 @@
+[style name="style"]
+[voice path="res://assets/tutorial_dialog/tutorial1.ogg" volume="0.0" bus="SFX"]
+Hey there, little turtle... whatcha doing there?
+[voice path="res://assets/tutorial_dialog/tutorial2.ogg" volume="0.0" bus="SFX"]
+Oh, having trouble moving? Uhh, try holding down 5 on your numpad... should do the trick.
+[voice path="res://assets/tutorial_dialog/tutorial3.ogg" volume="0.0" bus="SFX"]
+If you don't have a numpad, uhh JKL | UIO | 789 will work, it's close enough to a numpad, eh? So in your case, press I.
+[voice path="res://assets/tutorial_dialog/tutorial4.ogg" volume="0.0" bus="SFX"]
+Hopefully, the little bump on the J will help out with that... yeah?
+[voice path="res://assets/tutorial_dialog/tutorial5.ogg" volume="0.0" bus="SFX"]
+But uh... you're not supposed to be here so I'm gonna have to shoot you down... yeah it sucks I know...
+[voice path="res://assets/tutorial_dialog/tutorial6.ogg" volume="0.0" bus="SFX"]
+Get ready!
+do GameManager.dialogic_tutorial_shoot()

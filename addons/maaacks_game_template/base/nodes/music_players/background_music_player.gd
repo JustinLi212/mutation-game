@@ -1,5 +1,18 @@
 extends AudioStreamPlayer
 
+var color_streams: Dictionary = {
+	Gunshot.GunColor.WHITE: [],
+	Gunshot.GunColor.RED: [1, 2, 3],
+	Gunshot.GunColor.ORANGE: [4, 5, 6],
+	Gunshot.GunColor.YELLOW: [7, 8, 9],
+	Gunshot.GunColor.GREEN: [10, 11, 12],
+	Gunshot.GunColor.BLUE: [13, 14, 15],
+	Gunshot.GunColor.PURPLE: [],
+}
+
+var current_color_indices: Dictionary = {}
+
+
 var last_position: float = 0.0
 
 var sync_stream: AudioStreamSynchronized
@@ -9,7 +22,8 @@ var sync_stream: AudioStreamSynchronized
 func _ready() -> void:
 	EventBus.pause_opened.connect(_on_game_paused)
 	EventBus.pause_closed.connect(_on_game_unpaused)
-	EventBus.music_looped.connect(_on_music_looped)
+	EventBus.color_started.connect(_on_color_started)
+	GameManager.tutorial_shoot.connect(reset_music)
 	sync_stream = stream as AudioStreamSynchronized
 
 
@@ -17,6 +31,10 @@ func _process(delta: float) -> void:
 	if get_playback_position() < last_position:
 		EventBus.music_looped.emit()
 	last_position = get_playback_position()
+
+
+func reset_music() -> void:
+	seek(0)
 
 
 func _on_game_paused() -> void:
@@ -31,6 +49,19 @@ func _on_game_unpaused() -> void:
 		pause_player.stop()
 
 
-func _on_music_looped() -> void:
-	sync_stream.set_sync_stream_volume(1, -60)
-	sync_stream.set_sync_stream_volume(2, 0)
+func _on_color_started(color: Gunshot.GunColor) -> void:
+	await get_tree().physics_frame
+	var stream_list = color_streams[color]
+	# Fallback to red music
+	if stream_list.size() == 0:
+		stream_list = color_streams[Gunshot.GunColor.RED]
+	var idx: int = stream_list.pick_random()
+	sync_stream.set_sync_stream_volume(idx, 0.0)
+	current_color_indices[color] = idx
+	await EventBus.music_looped
+	sync_stream.set_sync_stream_volume(idx, -60.0)
+
+
+func _on_color_ended(color: Gunshot.GunColor) -> void:
+	return
+	sync_stream.set_sync_stream_volume(current_color_indices[color], -60.0)

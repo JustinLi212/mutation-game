@@ -21,32 +21,63 @@ var gun_functions: Array[Callable] = [
 func _ready() -> void:
 	EventBus.gun_fired.connect(_on_gun_fired)
 	EventBus.music_looped.connect(pick_random_attack)
+	GameManager.tutorial_shoot.connect(tutorial_attack)
 	
 	await get_tree().physics_frame
-	for i in range(1, 10):
-		GameManager.add_grid_and_player(i)
-	red_attack()
+	await get_tree().physics_frame
+	
+	GameManager.add_grid_and_player(5)
+	Dialogic.start("tutorial")
+	#await get_tree().create_timer(8.0, false).timeout
+	#
+	#for i in range(1, 10):
+		#GameManager.add_grid_and_player(i)
+	#red_attack()
+
+
+func tutorial_attack() -> void:
+	await get_tree().physics_frame
+	white_attack()
+
+
+func white_attack() -> void:
+	EventBus.color_started.emit(Gunshot.GunColor.WHITE)
+	for grid_number in GameManager.active_grids.duplicate():
+		var chosen_cells: Array = get_random_cells(grid_number, 9)
+		grid_manager.get_grid(grid_number).chosen_cells[Gunshot.GunColor.WHITE] = chosen_cells
+		for cell: Vector2i in chosen_cells:
+			grid_manager.add_gunshot(
+				GunshotInfo.new(grid_manager.get_grid(grid_number), cell, Gunshot.GunColor.WHITE, 7.5))
+	await EventBus.music_looped
+	EventBus.color_ended.emit(Gunshot.GunColor.WHITE)
 
 
 func red_attack() -> void:
+	EventBus.color_started.emit(Gunshot.GunColor.RED)
 	for grid_number in GameManager.active_grids.duplicate():
 		var chosen_cells: Array = get_random_cells(grid_number, 4)
 		grid_manager.get_grid(grid_number).chosen_cells[Gunshot.GunColor.RED] = chosen_cells
 		for cell: Vector2i in chosen_cells:
 			grid_manager.add_gunshot(
 				GunshotInfo.new(grid_manager.get_grid(grid_number), cell, Gunshot.GunColor.RED, 7.5))
+	await EventBus.music_looped
+	EventBus.color_ended.emit(Gunshot.GunColor.RED)
 	
 	
 func orange_attack() -> void:
+	EventBus.color_started.emit(Gunshot.GunColor.ORANGE)
 	for grid_number in get_random_grids(5):
 		var chosen_cells: Array = get_random_cells(grid_number, 8)
 		grid_manager.get_grid(grid_number).chosen_cells[Gunshot.GunColor.ORANGE] = chosen_cells
 		for cell: Vector2i in chosen_cells:
 			grid_manager.add_gunshot(
 				GunshotInfo.new(grid_manager.get_grid(grid_number), cell, Gunshot.GunColor.ORANGE, 7.5))
+	await EventBus.music_looped
+	EventBus.color_ended.emit(Gunshot.GunColor.ORANGE)
 
 
 func yellow_attack() -> void:
+	EventBus.color_started.emit(Gunshot.GunColor.YELLOW)
 	for _attack in 4:
 		for grid_number in get_random_grids(1):
 			var chosen_cells: Array = get_random_cells(grid_number, 7)
@@ -55,9 +86,12 @@ func yellow_attack() -> void:
 				grid_manager.add_gunshot(
 					GunshotInfo.new(grid_manager.get_grid(grid_number), cell, Gunshot.GunColor.YELLOW, 1.5))
 		await get_tree().create_timer(2.0, false).timeout
+	await EventBus.music_looped
+	EventBus.color_ended.emit(Gunshot.GunColor.YELLOW)
 
 
 func green_attack() -> void:
+	EventBus.color_started.emit(Gunshot.GunColor.GREEN)
 	var random_grids: Array = get_random_grids(5)
 	for grid_number in random_grids:
 		var chosen_cells: Array = get_random_cells(grid_number, 1)
@@ -73,9 +107,13 @@ func green_attack() -> void:
 				if Vector2i(r, c) not in grid_manager.get_grid(grid_number).chosen_cells[Gunshot.GunColor.GREEN]:
 					grid_manager.add_gunshot(
 				GunshotInfo.new(grid_manager.get_grid(grid_number), Vector2(r, c), Gunshot.GunColor.WHITE, 0.01))
+	
+	await EventBus.music_looped
+	EventBus.color_ended.emit(Gunshot.GunColor.GREEN)
 
 
 func blue_attack() -> void:
+	EventBus.color_started.emit(Gunshot.GunColor.BLUE)
 	var random_grids: Array = get_random_grids(4)
 	for grid_number in random_grids:
 		var chosen_cells: Array = get_random_cells(grid_number, 3)
@@ -94,6 +132,8 @@ func blue_attack() -> void:
 		var tween = create_tween().set_loops(3)
 		tween.tween_property(chosen_player, "modulate:a", 0.0, 0.15)
 		tween.tween_property(chosen_player, "modulate:a", 1.0, 0.15)
+	await EventBus.music_looped
+	EventBus.color_ended.emit(Gunshot.GunColor.BLUE)
 
 
 # I'M DEAD ASF
@@ -145,6 +185,8 @@ func _on_gun_fired() -> void:
 
 
 func pick_random_attack() -> void:
+	if not GameManager.game_started:
+		return
 	gun_functions.pick_random().call()
 
 

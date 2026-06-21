@@ -3,6 +3,7 @@ extends Node
 signal active_grids_changed
 signal active_players_changed
 signal cycle_survived
+signal tutorial_shoot
 
 
 var active_grids: Array[int] = []
@@ -10,6 +11,8 @@ var active_players: Array[int] = []
 
 var high_score: int = 0
 var cycles_survived: int = 0
+var game_started: bool = false
+var in_tutorial: bool = true
 
 
 func _ready() -> void:
@@ -82,13 +85,12 @@ func remove_grid(grid_number: int) -> void:
 		return
 	active_grids.remove_at(grid_index)
 	active_grids_changed.emit()
-	Engine.time_scale = 1.0 + (9 - active_grids.size()) / 9.0
+	if in_tutorial:
+		add_grid_and_player(4)
+		add_grid_and_player(6)
 	if active_grids == []:
 		WinLoseManager.game_won()
 		Engine.time_scale = 1.0
-	AudioServer.playback_speed_scale = Engine.time_scale
-	var pitch_shift := AudioServer.get_bus_effect(0, 0) as AudioEffectPitchShift
-	pitch_shift.pitch_scale = 1.0 / AudioServer.playback_speed_scale
 
 
 func remove_player(grid_number: int) -> void:
@@ -105,9 +107,17 @@ func _check_number(n: int) -> bool:
 	return 0 < n and n < 10
 
 func _on_music_looped() -> void:
+	if not game_started:
+		return
 	cycles_survived += 1
 	high_score = max(cycles_survived, high_score)
 	cycle_survived.emit()
+	
+	# Make it slightly faster each cycle
+	Engine.time_scale = 2.0 * (log(cycles_survived + 50) / log(10)) - 2.4
+	AudioServer.playback_speed_scale = Engine.time_scale
+	var pitch_shift := AudioServer.get_bus_effect(0, 0) as AudioEffectPitchShift
+	pitch_shift.pitch_scale = 1.0 / AudioServer.playback_speed_scale
 	
 	# Randomize last active grid
 	if active_grids.size() == 1:
@@ -127,3 +137,20 @@ func reset_time() -> void:
 	Engine.time_scale = 1.0
 	AudioServer.playback_speed_scale = 1.0
 	AudioServer.get_bus_effect(0, 0).pitch_scale = 1.0
+
+
+func dialogic_tutorial_shoot() -> void:
+	tutorial_shoot.emit()
+
+
+func dialogic_clone_more() -> void:
+	add_grid_and_player(1)
+	add_grid_and_player(7)
+	add_grid_and_player(3)
+	add_grid_and_player(9)
+	await get_tree().create_timer(1.0, false).timeout
+	add_grid_and_player(8)
+	add_grid_and_player(5)
+	add_grid_and_player(2)
+	await get_tree().create_timer(1.0, false).timeout
+	

@@ -1,14 +1,53 @@
 [gd_resource type="AudioStreamSynchronized" format=3 uid="uid://bsiimap67gs0v"]
 
 [ext_resource type="AudioStream" uid="uid://3cquer8e423q" path="res://assets/music/game_bg.ogg" id="1_x3pl0"]
-[ext_resource type="AudioStream" uid="uid://cfi0ivu3fxv66" path="res://assets/music/red1.ogg" id="2_ynl7k"]
-[ext_resource type="AudioStream" uid="uid://dpbx6ub670qgx" path="res://assets/music/red2.ogg" id="3_rdfir"]
+[ext_resource type="AudioStream" uid="uid://di3uqwhkh1xpd" path="res://assets/music/red1.ogg" id="2_ynl7k"]
+[ext_resource type="AudioStream" uid="uid://c8ka3uhnhe6r5" path="res://assets/music/green1.ogg" id="3_1llx3"]
+[ext_resource type="AudioStream" uid="uid://c86xwfs2mshlr" path="res://assets/music/red2.ogg" id="3_rdfir"]
+[ext_resource type="AudioStream" uid="uid://b0rpcvi8p3pw1" path="res://assets/music/red3.ogg" id="4_evm2t"]
+[ext_resource type="AudioStream" uid="uid://hwnq7hc3j8or" path="res://assets/music/green2.ogg" id="4_ogtrd"]
+[ext_resource type="AudioStream" uid="uid://bg1ssj7au3hpp" path="res://assets/music/orange1.ogg" id="5_2wvod"]
+[ext_resource type="AudioStream" uid="uid://b3jnjvvdixemt" path="res://assets/music/green3.ogg" id="5_oernl"]
+[ext_resource type="AudioStream" uid="uid://cbhqv6w76s6bb" path="res://assets/music/blue1.ogg" id="6_7dsy8"]
+[ext_resource type="AudioStream" uid="uid://dt5b344ea55yc" path="res://assets/music/orange2.ogg" id="6_vxuni"]
+[ext_resource type="AudioStream" uid="uid://br0xc8ajblw2r" path="res://assets/music/blue2.ogg" id="7_leg70"]
+[ext_resource type="AudioStream" uid="uid://dtb65p1nqd08o" path="res://assets/music/orange3.ogg" id="7_yg0kh"]
+[ext_resource type="AudioStream" uid="uid://cib41vjn27gwh" path="res://assets/music/blue3.ogg" id="8_lqtm2"]
+[ext_resource type="AudioStream" uid="uid://sjmjwak36iss" path="res://assets/music/yellow1.ogg" id="14_xxeon"]
+[ext_resource type="AudioStream" uid="uid://cubvthucuf7p" path="res://assets/music/yellow2.ogg" id="15_t8ptj"]
+[ext_resource type="AudioStream" uid="uid://br3lgpc1rrela" path="res://assets/music/yellow3.ogg" id="16_d5fat"]
 
 [resource]
-stream_count = 3
+stream_count = 16
 stream_0/stream = ExtResource("1_x3pl0")
 stream_0/volume = 0.0
 stream_1/stream = ExtResource("2_ynl7k")
-stream_1/volume = 0.0
+stream_1/volume = -60.0
 stream_2/stream = ExtResource("3_rdfir")
 stream_2/volume = -60.0
+stream_3/stream = ExtResource("4_evm2t")
+stream_3/volume = -60.0
+stream_4/stream = ExtResource("5_2wvod")
+stream_4/volume = -60.0
+stream_5/stream = ExtResource("6_vxuni")
+stream_5/volume = -60.0
+stream_6/stream = ExtResource("7_yg0kh")
+stream_6/volume = -60.0
+stream_7/stream = ExtResource("14_xxeon")
+stream_7/volume = -60.0
+stream_8/stream = ExtResource("15_t8ptj")
+stream_8/volume = -60.0
+stream_9/stream = ExtResource("16_d5fat")
+stream_9/volume = -60.0
+stream_10/stream = ExtResource("3_1llx3")
+stream_10/volume = -60.0
+stream_11/stream = ExtResource("4_ogtrd")
+stream_11/volume = -60.0
+stream_12/stream = ExtResource("5_oernl")
+stream_12/volume = -60.0
+stream_13/stream = ExtResource("6_7dsy8")
+stream_13/volume = -60.0
+stream_14/stream = ExtResource("7_leg70")
+stream_14/volume = -60.0
+stream_15/stream = ExtResource("8_lqtm2")
+stream_15/volume = -60.0
