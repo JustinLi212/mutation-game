@@ -40,8 +40,8 @@ directories/dtl_directory={
 "tutorial2": "res://tutorial2.dtl"
 }
 layout/style_directory={
-"": "res://style.tres",
-"style": "res://style.tres"
+"": "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/New_File.tres",
+"New_File": "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/New_File.tres"
 }
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=false
@@ -78,8 +78,8 @@ audio/channel_defaults={
 }
 text/autoadvance_enabled=false
 history/simple_history_enabled=false
-layout/style_list=["res://style.tres"]
-layout/default_style="res://style.tres"
+layout/style_list=["res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/New_File.tres"]
+layout/default_style="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/New_File.tres"
 glossary/default_case_sensitive=true
 variables={}
 

@@ -1,2 +1,9 @@
 [voice path="res://assets/tutorial_dialog/tutorial7.ogg" volume="0.0" bus="SFX"]
 Yo WHAT THE-
+do GameManager.dialogic_clone_more()
+[wait time="2.0"]
+[voice path="res://assets/tutorial_dialog/tutorial8.ogg" volume="0.0" bus="SFX"]
+If you hold down multiple numbers, it should control all of them.
+[voice path="res://assets/tutorial_dialog/tutorial9.ogg" volume="0.0" bus="SFX"]
+But I got a couple tricks and... mutations of my own... as well, so.... let's start!
+do GameManager.dialogic_start_game()

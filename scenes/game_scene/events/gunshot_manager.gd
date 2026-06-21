@@ -2,7 +2,8 @@ extends Node
 
 @export var gun_noises: Array[AudioStreamWAV]
 
-const MAX_CHOOSE_ATTEMPTS = 50
+const MAX_CHOOSE_ATTEMPTS = 100
+var picking: bool = false
 
 var gun_functions: Array[Callable] = [
 	red_attack,
@@ -185,9 +186,13 @@ func _on_gun_fired() -> void:
 
 
 func pick_random_attack() -> void:
+	if picking:
+		return
 	if not GameManager.game_started:
 		return
+	picking = true
 	gun_functions.pick_random().call()
+	picking = false
 
 
 func get_random_grids(count: int) -> Array:

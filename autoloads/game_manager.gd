@@ -4,6 +4,7 @@ signal active_grids_changed
 signal active_players_changed
 signal cycle_survived
 signal tutorial_shoot
+signal reset_music
 
 
 var active_grids: Array[int] = []
@@ -88,6 +89,7 @@ func remove_grid(grid_number: int) -> void:
 	if in_tutorial:
 		add_grid_and_player(4)
 		add_grid_and_player(6)
+		Dialogic.start("tutorial2")
 	if active_grids == []:
 		WinLoseManager.game_won()
 		Engine.time_scale = 1.0
@@ -153,4 +155,10 @@ func dialogic_clone_more() -> void:
 	add_grid_and_player(5)
 	add_grid_and_player(2)
 	await get_tree().create_timer(1.0, false).timeout
+
+
+func dialogic_start_game() -> void:
+	game_started = true
+	in_tutorial = false
+	reset_music.emit()
 	

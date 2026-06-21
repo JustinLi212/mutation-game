@@ -1,5 +1,13 @@
 extends AudioStreamPlayer
 
+var debounce = false:
+	set(val):
+		debounce = val
+		if val == true:
+			await get_tree().create_timer(6, false).timeout
+			debounce = false
+
+
 var color_streams: Dictionary = {
 	Gunshot.GunColor.WHITE: [],
 	Gunshot.GunColor.RED: [1, 2, 3],
@@ -12,7 +20,6 @@ var color_streams: Dictionary = {
 
 var current_color_indices: Dictionary = {}
 
-
 var last_position: float = 0.0
 
 var sync_stream: AudioStreamSynchronized
@@ -24,11 +31,13 @@ func _ready() -> void:
 	EventBus.pause_closed.connect(_on_game_unpaused)
 	EventBus.color_started.connect(_on_color_started)
 	GameManager.tutorial_shoot.connect(reset_music)
+	GameManager.reset_music.connect(reset_music)
 	sync_stream = stream as AudioStreamSynchronized
 
 
-func _process(delta: float) -> void:
-	if get_playback_position() < last_position:
+func _process(_delta: float) -> void:
+	if not debounce and get_playback_position() < last_position:
+		debounce = true
 		EventBus.music_looped.emit()
 	last_position = get_playback_position()
 

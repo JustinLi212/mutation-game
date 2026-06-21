@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DialogicStyle" format=3 uid="uid://dunmay0kih6yg"]
 
-[ext_resource type="PackedScene" uid="uid://cqpb3ie51rwl5" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.tscn" id="1_3y0cf"]
+[ext_resource type="PackedScene" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/DefaultLayoutBase/custom_default_layout_base.tscn" id="1_3y0cf"]
 [ext_resource type="Script" uid="uid://bwg6yncmh2cml" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_f5okj"]
 [ext_resource type="PackedScene" uid="uid://c1k5m0w3r40xf" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_FullBackground/full_background_layer.tscn" id="3_sw2m1"]
 [ext_resource type="PackedScene" uid="uid://cy1y14inwkplb" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Portraits/vn_portrait_layer.tscn" id="4_qi5gt"]
@@ -31,6 +31,9 @@ scene = ExtResource("5_00gbr")
 [sub_resource type="Resource" id="Resource_de0jg"]
 script = ExtResource("2_f5okj")
 scene = ExtResource("6_dprj7")
+overrides = {
+"box_size": "Vector2(150, 150)"
+}
 
 [sub_resource type="Resource" id="Resource_dxc1w"]
 script = ExtResource("2_f5okj")
@@ -47,6 +50,9 @@ scene = ExtResource("9_p0fdm")
 [sub_resource type="Resource" id="Resource_31ysy"]
 script = ExtResource("2_f5okj")
 scene = ExtResource("10_bfnvo")
+overrides = {
+"show_close_button": "false"
+}
 
 [resource]
 script = ExtResource("11_uq65q")
@@ -63,4 +69,4 @@ layer_info = {
 "16": SubResource("Resource_qpljk"),
 "17": SubResource("Resource_31ysy")
 }
-metadata/_latest_layer = "14"
+metadata/_latest_layer = ""
