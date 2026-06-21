@@ -47,7 +47,7 @@ func _process(_delta: float) -> void:
 
 
 func shoot(time: float) -> void:
-	timer.wait_time = time
+	timer.wait_time = time + (Engine.time_scale - 1.0) * 0.25
 	grid.gun_started.emit(gunshot_info)
 	
 	if gunshot_info.color == GunColor.GREEN:
