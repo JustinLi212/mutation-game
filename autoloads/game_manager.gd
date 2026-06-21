@@ -4,7 +4,7 @@ signal active_grids_changed
 signal active_players_changed
 signal cycle_survived
 signal tutorial_shoot
-signal reset_music
+signal reset_all_tracks
 
 
 var active_grids: Array[int] = []
@@ -133,6 +133,9 @@ func reset_state() -> void:
 	active_grids_changed.emit()
 	active_players_changed.emit()
 	reset_time()
+	game_started = false
+	in_tutorial = true
+	reset_all_tracks.emit()
 
 
 func reset_time() -> void:
@@ -160,5 +163,4 @@ func dialogic_clone_more() -> void:
 func dialogic_start_game() -> void:
 	game_started = true
 	in_tutorial = false
-	reset_music.emit()
 	

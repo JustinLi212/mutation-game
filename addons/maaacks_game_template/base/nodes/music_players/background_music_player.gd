@@ -1,5 +1,8 @@
 extends AudioStreamPlayer
 
+
+signal multiple_of_two
+
 var debounce = false:
 	set(val):
 		debounce = val
@@ -31,7 +34,7 @@ func _ready() -> void:
 	EventBus.pause_closed.connect(_on_game_unpaused)
 	EventBus.color_started.connect(_on_color_started)
 	GameManager.tutorial_shoot.connect(reset_music)
-	GameManager.reset_music.connect(reset_music)
+	GameManager.reset_all_tracks.connect(_on_reset_all_tracks)
 	sync_stream = stream as AudioStreamSynchronized
 
 
@@ -39,6 +42,7 @@ func _process(_delta: float) -> void:
 	if not debounce and get_playback_position() < last_position:
 		debounce = true
 		EventBus.music_looped.emit()
+
 	last_position = get_playback_position()
 
 
@@ -74,3 +78,8 @@ func _on_color_started(color: Gunshot.GunColor) -> void:
 func _on_color_ended(color: Gunshot.GunColor) -> void:
 	return
 	sync_stream.set_sync_stream_volume(current_color_indices[color], -60.0)
+
+
+func _on_reset_all_tracks() -> void:
+	for i in range(1, sync_stream.stream_count):
+		sync_stream.set_sync_stream_volume(i, -60.0)

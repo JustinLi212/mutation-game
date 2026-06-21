@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://u3hoafvcejmm" path="res://scenes/menus/main_menu/main_menu.gd" id="2_x31ro"]
 [ext_resource type="PackedScene" uid="uid://mhk7ai1jtttm" path="res://scenes/windows/main_menu_options_window.tscn" id="3_0jpat"]
 [ext_resource type="PackedScene" uid="uid://dnaejbfe1nvn1" path="res://scenes/windows/main_menu_credits_window.tscn" id="4_m0ubd"]
+[ext_resource type="Script" uid="uid://cvm3nmi6ru5o" path="res://scenes/menus/main_menu/high_score_label.gd" id="5_7j6ce"]
 [ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="5_627ab"]
 [ext_resource type="AudioStream" uid="uid://cy27881en4lrf" path="res://assets/sfx/ui_select.wav" id="5_m0ubd"]
 [ext_resource type="AudioStream" uid="uid://kn5rh27mxcvt" path="res://resources/music/menu_audio_stream.tres" id="5_x31ro"]
@@ -21,13 +22,33 @@ confirm_new_game = true
 options_packed_scene = ExtResource("3_0jpat")
 credits_packed_scene = ExtResource("4_m0ubd")
 
-[node name="UISoundController" parent="." index="0" unique_id=1619985599]
+[node name="TitleLabel2" type="Label" parent="." index="0" unique_id=1122962856]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = -159.0
+offset_right = 156.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.6392157)
+theme_override_font_sizes/font_size = 48
+text = "High Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_7j6ce")
+
+[node name="UISoundController" parent="." index="1" unique_id=1619985599]
 button_hovered = ExtResource("5_m0ubd")
 button_focused = ExtResource("5_m0ubd")
 tab_hovered = ExtResource("5_m0ubd")
 tab_changed = ExtResource("5_m0ubd")
 
-[node name="BackgroundMusicPlayer" parent="." index="1" unique_id=1141822549]
+[node name="BackgroundMusicPlayer" parent="." index="2" unique_id=1141822549]
 stream = ExtResource("5_x31ro")
 
 [node name="TitleMargin" parent="MenuContainer" parent_id_path=PackedInt32Array(396616752) index="0" unique_id=2112060331]
@@ -69,10 +90,10 @@ theme_override_font_sizes/font_size = 64
 [node name="ExitButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="5" unique_id=1750454379]
 visible = false
 
-[node name="VersionMargin" parent="." index="4" unique_id=1732528471]
+[node name="VersionMargin" parent="." index="5" unique_id=1732528471]
 visible = false
 
-[node name="NewGameConfirmation" parent="." index="5" unique_id=487332143 instance=ExtResource("5_627ab")]
+[node name="NewGameConfirmation" parent="." index="6" unique_id=487332143 instance=ExtResource("5_627ab")]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(420, 200)
@@ -86,7 +107,7 @@ text = "Are you sure you want to start a new game?
 All progress in the current game will be lost."
 title = "New Game"
 
-[node name="Transition" type="ColorRect" parent="." index="7" unique_id=1915857306]
+[node name="Transition" type="ColorRect" parent="." index="8" unique_id=1915857306]
 material = SubResource("ShaderMaterial_2h45r")
 layout_mode = 1
 anchors_preset = 15

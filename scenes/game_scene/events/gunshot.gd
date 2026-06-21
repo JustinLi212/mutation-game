@@ -15,13 +15,13 @@ enum GunColor {
 }
 
 static var colors: Dictionary[GunColor, Color] = {
-	GunColor.WHITE: Color(1.0, 1.0, 1.0, 1.0),
-	GunColor.RED: Color(1.0, 0.0, 0.0, 1.0),
-	GunColor.ORANGE: Color(1.0, 0.501, 0.12, 1.0),
-	GunColor.YELLOW: Color(1.0, 1.0, 0.0, 1.0),
-	GunColor.GREEN: Color(0.0, 0.764, 0.0, 1.0),
-	GunColor.BLUE: Color(0.218, 0.439, 1.0, 1.0),
-	GunColor.PURPLE: Color(0.565, 0.093, 1.0, 1.0),
+	GunColor.WHITE: Color("ffffffff"),
+	GunColor.RED: Color("ff0000ff"),
+	GunColor.ORANGE: Color("ff801fff"),
+	GunColor.YELLOW: Color("ffff00ff"),
+	GunColor.GREEN: Color("00c300ff"),
+	GunColor.BLUE: Color("3870ffff"),
+	GunColor.PURPLE: Color("9018ffff"),
 }
 
 var gunshot_info: GunshotInfo

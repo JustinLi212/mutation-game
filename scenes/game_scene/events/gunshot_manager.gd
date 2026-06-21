@@ -182,6 +182,7 @@ func blue_attack() -> void:
 
 func _on_gun_fired() -> void:
 	pew_sfx_player.stream = gun_noises.pick_random()
+	
 	pew_sfx_player.play()
 
 
