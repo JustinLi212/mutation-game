@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://baedlxxrk7fes" path="res://scenes/game_scene/events/gunshot.gd" id="1_jkvqg"]
 [ext_resource type="Texture2D" uid="uid://dj47aaeld880" path="res://assets/art/gun_sheet.png" id="1_qremt"]
+[ext_resource type="Texture2D" uid="uid://dkqedih1br78m" path="res://assets/art/heart_sheet.png" id="3_wak4c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u7ufq"]
 atlas = ExtResource("1_qremt")
@@ -13,6 +14,18 @@ region = Rect2(35, 0, 35, 35)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wak4c"]
 atlas = ExtResource("1_qremt")
+region = Rect2(70, 0, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtt1l"]
+atlas = ExtResource("3_wak4c")
+region = Rect2(0, 0, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nxk7"]
+atlas = ExtResource("3_wak4c")
+region = Rect2(35, 0, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgfxy"]
+atlas = ExtResource("3_wak4c")
 region = Rect2(70, 0, 35, 35)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmrvt"]
@@ -43,6 +56,25 @@ animations = [{
 "name": &"crosshair",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": 1,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtt1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nxk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgfxy")
+}],
+"loop": 1,
+"name": &"heart",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rmrvt")
@@ -67,7 +99,7 @@ script = ExtResource("1_jkvqg")
 [node name="GunSprite" type="AnimatedSprite2D" parent="." unique_id=535714177]
 z_index = 10
 sprite_frames = SubResource("SpriteFrames_65br1")
-animation = &"crosshair"
+animation = &"heart"
 autoplay = "crosshair"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1108077614]

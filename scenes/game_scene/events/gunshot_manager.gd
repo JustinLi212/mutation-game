@@ -8,6 +8,8 @@ var gun_functions: Array[Callable] = [
 	red_attack,
 	orange_attack,
 	yellow_attack,
+	green_attack,
+	blue_attack,
 ]
 
 @onready var grid_manager: GridManager = $"../GridManager"
@@ -30,7 +32,7 @@ func _ready() -> void:
 
 func red_attack() -> void:
 	for grid_number in GameManager.active_grids.duplicate():
-		var chosen_cells = get_random_cells(grid_number, 4)
+		var chosen_cells: Array = get_random_cells(grid_number, 4)
 		grid_manager.get_grid(grid_number).chosen_cells[Gunshot.GunColor.RED] = chosen_cells
 		for cell: Vector2i in chosen_cells:
 			grid_manager.add_gunshot(
@@ -39,7 +41,7 @@ func red_attack() -> void:
 	
 func orange_attack() -> void:
 	for grid_number in get_random_grids(5):
-		var chosen_cells = get_random_cells(grid_number, 8)
+		var chosen_cells: Array = get_random_cells(grid_number, 8)
 		grid_manager.get_grid(grid_number).chosen_cells[Gunshot.GunColor.ORANGE] = chosen_cells
 		for cell: Vector2i in chosen_cells:
 			grid_manager.add_gunshot(
@@ -49,12 +51,51 @@ func orange_attack() -> void:
 func yellow_attack() -> void:
 	for _attack in 4:
 		for grid_number in get_random_grids(1):
-			var chosen_cells = get_random_cells(grid_number, 8)
+			var chosen_cells: Array = get_random_cells(grid_number, 8)
 			grid_manager.get_grid(grid_number).chosen_cells[Gunshot.GunColor.YELLOW] = chosen_cells
 			for cell: Vector2i in chosen_cells:
 				grid_manager.add_gunshot(
 					GunshotInfo.new(grid_manager.get_grid(grid_number), cell, Gunshot.GunColor.YELLOW, 1.5))
 		await get_tree().create_timer(2.0, false).timeout
+
+
+func green_attack() -> void:
+	var random_grids: Array = get_random_grids(5)
+	for grid_number in random_grids:
+		var chosen_cells: Array = get_random_cells(grid_number, 1)
+		grid_manager.get_grid(grid_number).chosen_cells[Gunshot.GunColor.GREEN] = chosen_cells
+		for cell: Vector2i in chosen_cells:
+			grid_manager.add_gunshot(
+				GunshotInfo.new(grid_manager.get_grid(grid_number), cell, Gunshot.GunColor.GREEN, 7.5))
+	
+	await get_tree().create_timer(7.5, false).timeout
+	for grid_number in random_grids:
+		for r in 3:
+			for c in 3:
+				if Vector2i(r, c) not in grid_manager.get_grid(grid_number).chosen_cells[Gunshot.GunColor.GREEN]:
+					grid_manager.add_gunshot(
+				GunshotInfo.new(grid_manager.get_grid(grid_number), Vector2(r, c), Gunshot.GunColor.WHITE, 0.01))
+
+
+func blue_attack() -> void:
+	var random_grids: Array = get_random_grids(4)
+	for grid_number in random_grids:
+		var chosen_cells: Array = get_random_cells(grid_number, 3)
+		var chosen_grid := grid_manager.get_grid(grid_number) as Grid
+		var chosen_player = chosen_grid.player
+		var tween = create_tween().set_loops(3)
+		tween.tween_property(chosen_player, "modulate:a", 1.0, 0.15)
+		tween.tween_property(chosen_player, "modulate:a", 0.0, 0.15)
+		chosen_grid.chosen_cells[Gunshot.GunColor.BLUE] = chosen_cells
+		for cell: Vector2i in chosen_cells:
+			grid_manager.add_gunshot(
+				GunshotInfo.new(grid_manager.get_grid(grid_number), cell, Gunshot.GunColor.BLUE, 7.5))
+	await get_tree().create_timer(6.5, false).timeout
+	for grid_number in random_grids:
+		var chosen_player := grid_manager.get_grid(grid_number).player as Player
+		var tween = create_tween().set_loops(3)
+		tween.tween_property(chosen_player, "modulate:a", 0.0, 0.15)
+		tween.tween_property(chosen_player, "modulate:a", 1.0, 0.15)
 
 
 func _on_gun_fired() -> void:

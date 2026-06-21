@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://cjwcfe0lujpto" path="res://assets/sfx/pew/pew3.wav" id="10_wo30k"]
 [ext_resource type="AudioStream" uid="uid://cx7l5l7tb0426" path="res://assets/sfx/pew/pew4.wav" id="11_eyhni"]
 [ext_resource type="AudioStream" uid="uid://m4phph7r2cnn" path="res://assets/sfx/pew/pew5.wav" id="12_v5hj3"]
+[ext_resource type="Texture2D" uid="uid://b144m3esblohy" path="res://assets/art/x_number_sheet.png" id="16_4ailo"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_65kuu"]
 clip_count = 2
@@ -61,6 +62,35 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4ailo")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo30k"]
+atlas = ExtResource("16_4ailo")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyhni"]
+atlas = ExtResource("16_4ailo")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5hj3"]
+atlas = ExtResource("16_4ailo")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nqogl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo30k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyhni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5hj3")
 }],
 "loop": 1,
 "name": &"default",
@@ -287,108 +317,189 @@ custom_minimum_size = Vector2(60, 60)
 custom_maximum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/7" unique_id=1304355183]
+[node name="NumberSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/7" unique_id=1304355183]
 scale = Vector2(0.6, 0.6)
 sprite_frames = ExtResource("9_xceeg")
 animation = &"7"
 autoplay = "7"
 offset = Vector2(50, 50)
 
+[node name="Pivot" type="Node2D" parent="UI/ActivePlayers/7" unique_id=595472770]
+position = Vector2(30, 30)
+
+[node name="XSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/7/Pivot" unique_id=1829298608]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_nqogl")
+autoplay = "default"
+
 [node name="8" type="TextureRect" parent="UI/ActivePlayers" unique_id=1958936303]
 custom_minimum_size = Vector2(60, 60)
 custom_maximum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/8" unique_id=312571242]
+[node name="NumberSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/8" unique_id=312571242]
 scale = Vector2(0.6, 0.6)
 sprite_frames = ExtResource("9_xceeg")
 animation = &"8"
 autoplay = "8"
 offset = Vector2(50, 50)
 
+[node name="Pivot" type="Node2D" parent="UI/ActivePlayers/8" unique_id=2046443687]
+position = Vector2(30, 30)
+
+[node name="XSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/8/Pivot" unique_id=158207770]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_nqogl")
+autoplay = "default"
+
 [node name="9" type="TextureRect" parent="UI/ActivePlayers" unique_id=834129553]
 custom_minimum_size = Vector2(60, 60)
 custom_maximum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/9" unique_id=846258812]
+[node name="NumberSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/9" unique_id=846258812]
 scale = Vector2(0.6, 0.6)
 sprite_frames = ExtResource("9_xceeg")
 animation = &"9"
 autoplay = "9"
 offset = Vector2(50, 50)
 
+[node name="Pivot" type="Node2D" parent="UI/ActivePlayers/9" unique_id=757849899]
+position = Vector2(30, 30)
+
+[node name="XSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/9/Pivot" unique_id=1426973266]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_nqogl")
+autoplay = "default"
+
 [node name="4" type="TextureRect" parent="UI/ActivePlayers" unique_id=1750554369]
 custom_minimum_size = Vector2(60, 60)
 custom_maximum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/4" unique_id=2088222111]
+[node name="NumberSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/4" unique_id=2088222111]
 scale = Vector2(0.6, 0.6)
 sprite_frames = ExtResource("9_xceeg")
 animation = &"4"
 autoplay = "4"
 offset = Vector2(50, 50)
 
+[node name="Pivot" type="Node2D" parent="UI/ActivePlayers/4" unique_id=1277434269]
+position = Vector2(30, 30)
+
+[node name="XSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/4/Pivot" unique_id=431778258]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_nqogl")
+autoplay = "default"
+
 [node name="5" type="TextureRect" parent="UI/ActivePlayers" unique_id=716612352]
 custom_minimum_size = Vector2(60, 60)
 custom_maximum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/5" unique_id=812307137]
+[node name="NumberSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/5" unique_id=812307137]
 scale = Vector2(0.6, 0.6)
 sprite_frames = ExtResource("9_xceeg")
 animation = &"5"
 autoplay = "5"
 offset = Vector2(50, 50)
 
+[node name="Pivot" type="Node2D" parent="UI/ActivePlayers/5" unique_id=2084394587]
+position = Vector2(30, 30)
+
+[node name="XSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/5/Pivot" unique_id=1980439769]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_nqogl")
+autoplay = "default"
+
 [node name="6" type="TextureRect" parent="UI/ActivePlayers" unique_id=992589342]
 custom_minimum_size = Vector2(60, 60)
 custom_maximum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/6" unique_id=1798732563]
+[node name="NumberSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/6" unique_id=1798732563]
 scale = Vector2(0.6, 0.6)
 sprite_frames = ExtResource("9_xceeg")
 animation = &"6"
 autoplay = "6"
 offset = Vector2(50, 50)
 
+[node name="Pivot" type="Node2D" parent="UI/ActivePlayers/6" unique_id=711328478]
+position = Vector2(30, 30)
+
+[node name="XSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/6/Pivot" unique_id=159745983]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_nqogl")
+autoplay = "default"
+
 [node name="1" type="TextureRect" parent="UI/ActivePlayers" unique_id=651182837]
 custom_minimum_size = Vector2(60, 60)
 custom_maximum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/1" unique_id=628873492]
+[node name="NumberSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/1" unique_id=628873492]
 scale = Vector2(0.6, 0.6)
 sprite_frames = ExtResource("9_xceeg")
 animation = &"1"
 autoplay = "1"
 offset = Vector2(50, 50)
 
+[node name="Pivot" type="Node2D" parent="UI/ActivePlayers/1" unique_id=1205292613]
+position = Vector2(30, 30)
+
+[node name="XSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/1/Pivot" unique_id=1418997023]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_nqogl")
+autoplay = "default"
+
 [node name="2" type="TextureRect" parent="UI/ActivePlayers" unique_id=1746561448]
 custom_minimum_size = Vector2(60, 60)
 custom_maximum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/2" unique_id=257262194]
+[node name="NumberSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/2" unique_id=257262194]
 scale = Vector2(0.6, 0.6)
 sprite_frames = ExtResource("9_xceeg")
 animation = &"2"
 autoplay = "2"
 offset = Vector2(50, 50)
 
+[node name="Pivot" type="Node2D" parent="UI/ActivePlayers/2" unique_id=116916379]
+position = Vector2(30, 30)
+
+[node name="XSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/2/Pivot" unique_id=945454549]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_nqogl")
+autoplay = "default"
+
 [node name="3" type="TextureRect" parent="UI/ActivePlayers" unique_id=1014756377]
 custom_minimum_size = Vector2(60, 60)
 custom_maximum_size = Vector2(60, 60)
 layout_mode = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/ActivePlayers/3" unique_id=2097854618]
+[node name="NumberSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/3" unique_id=2097854618]
 scale = Vector2(0.6, 0.6)
 sprite_frames = ExtResource("9_xceeg")
 animation = &"3"
 autoplay = "3"
 offset = Vector2(50, 50)
+
+[node name="Pivot" type="Node2D" parent="UI/ActivePlayers/3" unique_id=741962072]
+position = Vector2(30, 30)
+
+[node name="XSprite" type="AnimatedSprite2D" parent="UI/ActivePlayers/3/Pivot" unique_id=757921715]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_nqogl")
+autoplay = "default"
 
 [node name="PauseQueuedLabel" type="RichTextLabel" parent="UI" unique_id=874117476]
 offset_left = 1025.0
@@ -396,7 +507,7 @@ offset_top = 583.0
 offset_right = 1266.0
 offset_bottom = 712.0
 theme_override_font_sizes/normal_font_size = 60
-text = "Paused queued..."
+text = "Pause queued..."
 horizontal_alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/PauseQueuedLabel" unique_id=328450847]
@@ -465,3 +576,5 @@ position = Vector2(640, 720)
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_wti3h")
 autoplay = "default"
+
+[connection signal="frame_changed" from="UI/ActivePlayers/7/Pivot/XSprite" to="UI/ActivePlayers" method="_on_x_sprite_frame_changed"]

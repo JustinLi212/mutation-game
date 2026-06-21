@@ -107,10 +107,12 @@ func _on_exit_button_pressed() -> void:
 	_show_window(exit_confirmation)
 
 func _on_restart_confirmation_confirmed() -> void:
+	GameManager.reset_time()
 	SceneLoader.reload_current_scene()
 	close()
 
 func _on_main_menu_confirmation_confirmed():
+	GameManager.reset_time()
 	_load_scene(get_main_menu_scene_path())
 
 func _on_exit_confirmation_confirmed():

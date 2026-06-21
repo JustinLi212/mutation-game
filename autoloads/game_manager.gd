@@ -80,8 +80,13 @@ func remove_grid(grid_number: int) -> void:
 		return
 	active_grids.remove_at(grid_index)
 	active_grids_changed.emit()
+	Engine.time_scale = 1.0 + (9 - active_grids.size()) / 9.0
 	if active_grids == []:
 		WinLoseManager.game_won()
+		Engine.time_scale = 1.0
+	AudioServer.playback_speed_scale = Engine.time_scale
+	var pitch_shift := AudioServer.get_bus_effect(0, 0) as AudioEffectPitchShift
+	pitch_shift.pitch_scale = 1.0 / AudioServer.playback_speed_scale
 
 
 func remove_player(grid_number: int) -> void:
@@ -107,3 +112,10 @@ func reset_state() -> void:
 	cycles_survived = 0
 	active_grids_changed.emit()
 	active_players_changed.emit()
+	reset_time()
+
+
+func reset_time() -> void:
+	Engine.time_scale = 1.0
+	AudioServer.playback_speed_scale = 1.0
+	AudioServer.get_bus_effect(0, 0).pitch_scale = 1.0

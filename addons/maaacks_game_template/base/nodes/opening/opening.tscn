@@ -11,11 +11,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fcjph")
 
-[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1317385298]
-process_mode = 3
-autoplay = true
-bus = &"Music"
-
 [node name="ImagesContainer" type="MarginContainer" parent="." unique_id=1471559661]
 unique_name_in_owner = true
 layout_mode = 1

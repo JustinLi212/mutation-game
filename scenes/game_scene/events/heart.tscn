@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://c0h11hkj0vk7a"]
+
+[ext_resource type="Script" uid="uid://baedlxxrk7fes" path="res://scenes/game_scene/events/gunshot.gd" id="1_pm8ly"]
+[ext_resource type="Texture2D" uid="uid://dkqedih1br78m" path="res://assets/art/heart_sheet.png" id="2_id6un"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn6kv"]
+atlas = ExtResource("2_id6un")
+region = Rect2(0, 0, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvbor"]
+atlas = ExtResource("2_id6un")
+region = Rect2(35, 0, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7pwh"]
+atlas = ExtResource("2_id6un")
+region = Rect2(70, 0, 35, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jkvqg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn6kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvbor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7pwh")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"impact",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2h45r"]
+size = Vector2(6, 6)
+
+[node name="Heart" type="Area2D" unique_id=1904852629]
+script = ExtResource("1_pm8ly")
+
+[node name="HeartSprite" type="AnimatedSprite2D" parent="." unique_id=535714177]
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_jkvqg")
+animation = &"impact"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1108077614]
+shape = SubResource("RectangleShape2D_2h45r")
+
+[node name="Timer" type="Timer" parent="." unique_id=217466446]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -15,6 +15,11 @@ run/main_scene="res://scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.7")
 config/icon="uid://h8t34ms5hkmv"
 
+[audio]
+
+buses/default_bus_layout="uid://dlo5inop6ahho"
+driver/output_latency.web=15
+
 [autoload]
 
 EventBus="*uid://cf7pey8wj1n8s"

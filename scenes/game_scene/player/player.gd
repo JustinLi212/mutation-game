@@ -15,18 +15,20 @@ var alive: bool = false:
 		alive = value
 		$CollisionShape2D.set_deferred("disabled", not alive)
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D	
 
 
 func _input(event: InputEvent) -> void:
 	if not can_move:
 		return
 	if event.is_action_pressed("move_left"):
+		sprite.flip_h = true
 		if not $LeftRayCast.is_colliding():
 			_move(Vector2.LEFT)
 		else:
 			_shake_grid(Vector2.LEFT)
 	if event.is_action_pressed("move_right"):
+		sprite.flip_h = false
 		if not $RightRayCast.is_colliding():
 			_move(Vector2.RIGHT)
 		else:

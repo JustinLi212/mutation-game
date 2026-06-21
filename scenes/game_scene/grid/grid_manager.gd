@@ -58,5 +58,12 @@ func add_gunshot(gunshot_info: GunshotInfo) -> void:
 	gunshot.gunshot_info = gunshot_info
 	gunned_grid.add_child(gunshot)
 	gunshot.shoot(gunshot_info.time_left)
-	
-	
+
+
+func add_impact(gunshot_info: GunshotInfo) -> void:
+	var gunned_grid: Grid = gunshot_info.grid
+	var gunshot: Gunshot = GUNSHOT_SCENE.instantiate()
+	gunshot.position = (gunshot_info.cell + Vector2i(-1, -1)) * 37
+	gunshot.gunshot_info = gunshot_info
+	gunned_grid.add_child(gunshot)
+	gunshot.impact()

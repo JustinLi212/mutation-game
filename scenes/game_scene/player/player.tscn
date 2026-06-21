@@ -1,16 +1,45 @@
 [gd_scene format=3 uid="uid://cigqx6eyt650v"]
 
-[ext_resource type="Texture2D" uid="uid://bv27281g5hqqo" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://djcsq3trp38lj" path="res://scenes/game_scene/player/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://bdgky2nyyx4mo" path="res://assets/art/turtle_sheet.png" id="2_tcwrj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7k1jl"]
+atlas = ExtResource("2_tcwrj")
+region = Rect2(0, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyjql"]
+atlas = ExtResource("2_tcwrj")
+region = Rect2(34, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p8hl"]
+atlas = ExtResource("2_tcwrj")
+region = Rect2(68, 0, 34, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2h45r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7k1jl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyjql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p8hl")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1433435650]
 script = ExtResource("1_g2els")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=901895823]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_3vyb7")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1766132072]
+sprite_frames = SubResource("SpriteFrames_2h45r")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=250856823]
 shape = SubResource("RectangleShape2D_g2els")
