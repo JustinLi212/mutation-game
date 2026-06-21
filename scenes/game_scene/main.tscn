@@ -297,7 +297,7 @@ color = Color(0, 0, 0, 1)
 [node name="UI" type="CanvasLayer" parent="." unique_id=516673177]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI" unique_id=291298332]
-position = Vector2(1144, 227.5)
+position = Vector2(1147, 227.5)
 sprite_frames = SubResource("SpriteFrames_tsmfw")
 autoplay = "default"
 
@@ -305,9 +305,9 @@ autoplay = "default"
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -229.0
+offset_left = -226.0
 offset_top = 276.5
-offset_right = -41.0
+offset_right = -38.0
 offset_bottom = 476.5
 grow_horizontal = 0
 columns = 3

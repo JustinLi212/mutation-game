@@ -5,12 +5,12 @@ extends Node
 const MAX_CHOOSE_ATTEMPTS = 50
 
 var gun_functions: Array[Callable] = [
-	#red_attack,
-	#orange_attack,
-	#yellow_attack,
-	#green_attack,
-	#blue_attack,
-	purple_attack,
+	red_attack,
+	orange_attack,
+	yellow_attack,
+	green_attack,
+	blue_attack,
+	#purple_attack,
 ]
 
 @onready var grid_manager: GridManager = $"../GridManager"
@@ -96,43 +96,47 @@ func blue_attack() -> void:
 		tween.tween_property(chosen_player, "modulate:a", 1.0, 0.15)
 
 
-func purple_attack() -> void:
-	var random_grids: Array[int] = []
-	if GameManager.active_grids.size() > 1:
-		# Get two grids ready for swapping
-		random_grids = get_random_grids(2)
-	else:
-		# physics_frame because the game will swap grids first
-		await get_tree().physics_frame
-		var active_grid: int = GameManager.active_grids[0]
-		random_grids.append(active_grid)
-		for _i in MAX_CHOOSE_ATTEMPTS:
-			var random_grid := randi_range(1, 9)
-			if random_grid != active_grid:
-				random_grids.append(random_grid)
-				break
-	_swap_grid_numbers(random_grids[0], random_grids[1])
-	
-	var random_gun_grids: Array = get_random_grids(4)
-	for grid_number in random_gun_grids:
-		var chosen_cells: Array = get_random_cells(grid_number, 4)
-		grid_manager.get_grid(grid_number).chosen_cells[Gunshot.GunColor.PURPLE] = chosen_cells
-		for cell: Vector2i in chosen_cells:
-			grid_manager.add_gunshot(
-				GunshotInfo.new(grid_manager.get_grid(grid_number), cell, Gunshot.GunColor.PURPLE, 7.5))
-	
-	await get_tree().create_timer(7.5, false).timeout
-	_swap_grid_numbers(random_grids[0], random_grids[1])
+# I'M DEAD ASF
+
+#func purple_attack() -> void:
+	#var random_grids: Array[int] = []
+	#if GameManager.active_grids.size() > 1:
+		## Get two grids ready for swapping
+		#random_grids = get_random_grids(2)
+	#else:
+		## physics_frame because the game will swap grids first
+		#await get_tree().physics_frame
+		#var active_grid: int = GameManager.active_grids[0]
+		#random_grids.append(active_grid)
+		#for _i in MAX_CHOOSE_ATTEMPTS:
+			#var random_grid := randi_range(1, 9)
+			#if random_grid != active_grid:
+				#random_grids.append(random_grid)
+				#break
+	#_swap_grid_numbers(random_grids[0], random_grids[1])
+	#
+	#var random_gun_grids: Array = get_random_grids(4)
+	#for grid_number in random_gun_grids:
+		#var chosen_cells: Array = get_random_cells(grid_number, 4)
+		#grid_manager.get_grid(grid_number).chosen_cells[Gunshot.GunColor.PURPLE] = chosen_cells
+		#for cell: Vector2i in chosen_cells:
+			#grid_manager.add_gunshot(
+				#GunshotInfo.new(grid_manager.get_grid(grid_number), cell, Gunshot.GunColor.PURPLE, 7.5))
+	#
+	#await get_tree().create_timer(7.5, false).timeout
+	#_swap_grid_numbers(random_grids[0], random_grids[1])
 
 
-func _swap_grid_numbers(grid1_num: int, grid2_num: int) -> void:
-	var grid1: Grid = grid_manager.get_grid(grid1_num)
-	var grid2: Grid = grid_manager.get_grid(grid2_num)
-	var tween = create_tween().set_parallel()
-	tween.tween_property(grid2, "position", GameManager.base_positions[grid1_num - 1], 0)
-	tween.tween_property(grid1, "position", GameManager.base_positions[grid2_num - 1], 0)
-	grid1.grid_position_changed.emit()
-	grid2.grid_position_changed.emit()
+#func _swap_grid_numbers(grid1_num: int, grid2_num: int) -> void:
+	#var grid1: Grid = grid_manager.get_grid(grid1_num)
+	#var grid2: Grid = grid_manager.get_grid(grid2_num)
+	#var tmp = grid1.global_position
+	#grid1.global_position = grid2.global_position
+	#grid2.global_position = tmp
+	#grid1.grid_body.position = Vector2.ZERO
+	#grid2.grid_body.position = Vector2.ZERO
+	#grid1.grid_position_changed.emit()
+	#grid2.grid_position_changed.emit()
 
 
 func _on_gun_fired() -> void:

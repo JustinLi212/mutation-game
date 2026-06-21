@@ -4,17 +4,6 @@ signal active_grids_changed
 signal active_players_changed
 signal cycle_survived
 
-var base_positions: Array[Vector2] = [
-	Vector2(-185, 185),
-	Vector2(0, 185),
-	Vector2(185, 185),
-	Vector2(-185, 0),
-	Vector2(0, 0),
-	Vector2(185, 0),
-	Vector2(-185, -185),
-	Vector2(0, -185),
-	Vector2(185, -185)
-]
 
 var active_grids: Array[int] = []
 var active_players: Array[int] = []
