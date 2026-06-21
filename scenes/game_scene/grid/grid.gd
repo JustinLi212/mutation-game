@@ -5,7 +5,7 @@ extends Node2D
 signal gun_timer_changed(value: float)
 signal gun_started(gunshot_info: GunshotInfo)
 signal gun_ended(gunshot_info: GunshotInfo)
-
+signal grid_position_changed
 
 @export var grid_number: int = 1
 
@@ -39,6 +39,8 @@ func _ready() -> void:
 	gun_started.connect(_on_gun_started)
 	gun_ended.connect(_on_gun_ended)
 	gun_timer_changed.connect(_on_gun_timer_changed)
+	grid_position_changed.connect(_on_grid_position_changed)
+	GameManager.active_grids_changed.connect(_on_active_grids_changed)
 	for sprite: AnimatedSprite2D in grid_labels.get_children():
 		sprite.animation = &"%d" % grid_number
 		sprite.play()
@@ -80,3 +82,25 @@ func _on_gun_ended(_gunshot_info: GunshotInfo) -> void:
 func _on_gun_timer_changed(time_left: float, wait_time: float) -> void:
 	time_left_label.text = "%.1f" % (time_left / Engine.time_scale)
 	gun_progress_bar.value = (wait_time - time_left) / wait_time * 100.0
+
+
+func _on_active_grids_changed() -> void:
+	is_active = (grid_number in GameManager.active_grids)
+
+
+func _on_grid_position_changed() -> void:
+	if not is_active:
+		return
+	var sprite_tween = create_tween().set_loops(3)
+	sprite_tween.tween_property(grid_sprite, "modulate:a", 0.0, 0.2)
+	sprite_tween.tween_property(grid_sprite, "modulate:a", 1.0, 0.2)
+	#for sprite: AnimatedSprite2D in grid_labels.get_children():
+		#sprite.animation = &"%d" % grid_number
+		#sprite.play()
+		#sprite.modulate = Gunshot.colors[Gunshot.GunColor.PURPLE]
+		#var tween = create_tween().set_loops(3)
+		#tween.tween_property(sprite, "modulate:a", 0.0, 0.2)
+		#tween.tween_property(sprite, "modulate:a", 1.0, 0.2)
+	#await get_tree().create_timer(1.2, false).timeout
+	#for sprite: AnimatedSprite2D in grid_labels.get_children():
+		#sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)

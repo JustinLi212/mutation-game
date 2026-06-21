@@ -21,7 +21,7 @@ static var colors: Dictionary[GunColor, Color] = {
 	GunColor.YELLOW: Color(1.0, 1.0, 0.0, 1.0),
 	GunColor.GREEN: Color(0.0, 0.764, 0.0, 1.0),
 	GunColor.BLUE: Color(0.218, 0.439, 1.0, 1.0),
-	GunColor.PURPLE: Color(0.781, 0.502, 1.0, 1.0),
+	GunColor.PURPLE: Color(0.565, 0.093, 1.0, 1.0),
 }
 
 var gunshot_info: GunshotInfo

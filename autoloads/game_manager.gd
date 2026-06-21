@@ -2,6 +2,19 @@ extends Node
 
 signal active_grids_changed
 signal active_players_changed
+signal cycle_survived
+
+var base_positions: Array[Vector2] = [
+	Vector2(-185, 185),
+	Vector2(0, 185),
+	Vector2(185, 185),
+	Vector2(-185, 0),
+	Vector2(0, 0),
+	Vector2(185, 0),
+	Vector2(-185, -185),
+	Vector2(0, -185),
+	Vector2(185, -185)
+]
 
 var active_grids: Array[int] = []
 var active_players: Array[int] = []
@@ -105,6 +118,8 @@ func _check_number(n: int) -> bool:
 func _on_music_looped() -> void:
 	cycles_survived += 1
 	high_score = max(cycles_survived, high_score)
+	cycle_survived.emit()
+	
 	# Randomize last active grid
 	if active_grids.size() == 1:
 		active_grids = [randi_range(1, 9)]
