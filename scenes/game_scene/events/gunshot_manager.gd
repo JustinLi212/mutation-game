@@ -33,7 +33,7 @@ func _ready() -> void:
 	#
 	#for i in range(1, 10):
 		#GameManager.add_grid_and_player(i)
-	#red_attack()
+	#green_attack()
 
 
 func tutorial_attack() -> void:
@@ -101,13 +101,12 @@ func green_attack() -> void:
 			grid_manager.add_gunshot(
 				GunshotInfo.new(grid_manager.get_grid(grid_number), cell, Gunshot.GunColor.GREEN, 7.5))
 	
-	await get_tree().create_timer(7.5, false).timeout
 	for grid_number in random_grids:
 		for r in 3:
 			for c in 3:
 				if Vector2i(r, c) not in grid_manager.get_grid(grid_number).chosen_cells[Gunshot.GunColor.GREEN]:
-					grid_manager.add_gunshot(
-				GunshotInfo.new(grid_manager.get_grid(grid_number), Vector2(r, c), Gunshot.GunColor.WHITE, 0.01))
+					grid_manager.add_invisible_gunshot(
+				GunshotInfo.new(grid_manager.get_grid(grid_number), Vector2(r, c), Gunshot.GunColor.WHITE, 7.5))
 	
 	await EventBus.music_looped
 	EventBus.color_ended.emit(Gunshot.GunColor.GREEN)

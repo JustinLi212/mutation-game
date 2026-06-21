@@ -3,6 +3,7 @@ extends Area2D
 
 const FADE_IN_TIME = 0.1
 const FADE_OUT_TIME = 0.1
+var visible_crosshair: bool = true
 
 enum GunColor {
 	WHITE,			## Starter. Spawns one gunshot per grid.
@@ -54,8 +55,10 @@ func shoot(time: float) -> void:
 		z_index = -100
 	
 	# Show the gun crosshair
-	var tween := create_tween()
-	tween.tween_property(sprite, "modulate:a", 1.0, FADE_IN_TIME)
+	var tween: Tween
+	if visible_crosshair:
+		tween = create_tween()
+		tween.tween_property(sprite, "modulate:a", 1.0, FADE_IN_TIME)
 	
 	if gunshot_info.color != GunColor.GREEN:
 		var rotate_tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
